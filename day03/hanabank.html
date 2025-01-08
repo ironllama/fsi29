@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hana Bank</title>
+</head>
+
+<body>
+    <p>
+        궁금하신 점을 남겨주시면 접수 순서대로 답변을 드리겠습니다.<br>
+        로그인 후 상담하시면 이메일 상담내역을 조회할 수 있습니다.
+    </p>
+    <table width="900" cellpadding="10" border="0">
+        <tr>
+            <td width="80" align="right">*고객구분</td>
+            <td>
+                <input id="indiv" type="radio"><label for="indiv">개인회원</label>
+                <input id="corp" type="radio"><label for="corp">기업회원</label>
+            </td>
+        </tr>
+        <tr>
+            <td align="right"><label for="name">*성명</label></td>
+            <td>
+                <input id="name" type="text" placeholder="김 OO (예시)">
+            </td>
+        </tr>
+        <tr>
+            <td align="right"><label for="bday">*생년월일</label></td>
+            <td>
+                <input id="bday" type="text" placeholder="19800101(예시)">
+            </td>
+        </tr>
+        <tr>
+            <td align="right"><label for="email">*이메일</label></td>
+            <td>
+                <input id="email" type="text">
+                @
+                <select>
+                    <option>선택</option>
+                    <option>naver.com</option>
+                    <option>hanmail.net</option>
+                    <option>gmail.com</option>
+                    <option>nate.com</option>
+                    <option>daum.net</option>
+                    <option>hotmail.com</option>
+                    <option>bill36524.com</option>
+                    <option>korea.com</option>
+                    <option>empal.com</option>
+                    <option>chol.com</option>
+                    <option>paran.com</option>
+                    <option>chollian.net</option>
+                    <option>dreamwiz.com</option>
+                    <option>unitel.co.kr</option>
+                    <option>yahoo.co.kr</option>
+                    <option>empas.com</option>
+                    <option>hanafos.com</option>
+                    <option>yahoo.com</option>
+                    <option>bestbill.co.kr</option>
+                    <option>msn.com</option>
+                    <option>kakao.com</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">*연락처</td>
+            <td>
+                <select>
+                    <option>핸드폰</option>
+                    <option>집</option>
+                    <option>직장</option>
+                    <option>기타</option>
+                </select>
+                <select>
+                    <option>010</option>
+                    <option>011</option>
+                    <option>016</option>
+                    <option>017</option>
+                    <option>018</option>
+                    <option>019</option>
+                </select>
+                -
+                <input type="number" maxlength="4">
+                -
+                <input type="number" maxlength="4">
+                연락처를 입력해 주십시오.
+            </td>
+        </tr>
+        <tr>
+            <td align="right" valign="top"><label for="detail">*개인정보 수집 및 이용 동의</label></td>
+            <td>
+                <textarea cols="100" rows="10" disabled>고객님의 상담업무를 처리하기 위해서는 개인정보보호법 제15조 1항 및 제24조 1항에 따라 아래의 내용에 대하여 고객님의 동의가 필요합니다.
+
+1. 개인정보의 수집,이용목적
+서비스 이용에 따른 상담업무 처리를 위한 본인식별, 본인의사확인 및 상담결과 통보
+
+2. 수집하는 개인정보의 항목
+[성명, 생년월일, e-mail 주소, 전화번호, 이메일 질문내용]
+
+3. 개인정보의 보유 및 이용 기간
+위 개인정보는 수집·이용에 관한 동의 이후 처리 종료일로부터 5년간 위 이용목적을 위하여 보유·이용됩니다.
+단,(금융)거래 종료일 후에는 금융사고 조사, 분쟁 해결, 민원처리, 법령상 의무이행 및 당행의 리스크 관리업무만을 위하여 보유·이용됩니다.
+
+4. 고객님은 개인정보 수집 및 이용을 거부할 권리가 있으며 권리행사 시 상담이 거부될 수 있습니다.
+                </textarea>
+                <br>
+                개인정보 수집 및 이용에 동의하십니까?
+                <input type="radio" id="collectagree"><label for="collectagree">동의함
+                    <input type="radio" id="collectdisagree"><label for="collectdisagree">동의하지 않음</label>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">*질문 카테고리</td>
+            <td>
+                <select>
+                    <option>선택하세요.</option>
+                    <option>예금</option>
+                    <option>대출</option>
+                    <option>외환</option>
+                    <option>마이데이터/모바일/인터넷뱅킹</option>
+                    <option>펀드</option>
+                    <option>퇴직연금</option>
+                    <option>기타</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="right"><label for="q-subject">*제목</label></td>
+            <td>
+                <input id="q-subject" type="text">
+            </td>
+        </tr>
+        <tr>
+            <td align="right" valign="top"><label for="q-subject">*내용</label></td>
+            <td>
+                <textarea cols="100" rows="10" placeholder="- 은행은 이메일 상담시 손님의 개인정보(주민등록번호, 계좌번호, 비밀번호 등)를 요구하지 않으며 개인정보 입력으로 인한 어떠한 사고도 책임지지 않으니 개인정보 관리에 유의하시기 바랍니다.
+- 본인확인이 필요한 상담과 법인손님은 일부 상담이 제한될 수 있으니, 신속한 상담을 원하실 때는 전화상담(1599-1111)을 이용해 주시기 바랍니다.
+- 이메일 상담은 실시간 상담이 아니며 다소 지연될 수 있습니다."></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="button" value="신청">
+                <input type="button" value="취소">
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

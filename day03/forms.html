@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+
+<body>
+    <form>
+        <div>
+            Name: <input size="32" type="text">
+        </div>
+        <div>
+            <!-- We can have labels for inputs. This allows for a relationship. -->
+            <label for="first_name">Name: </label><input id="first_name" type="text">
+        </div>
+        <div>
+            <!-- We can also put the input inside the label. -->
+            <label>
+                Name:
+                <input type="text">
+            </label>
+        </div>
+        <div>
+            <!-- Using a placeholder. -->
+            <label>
+                Name:
+                <input type="text" placeholder="Enter your name here.">
+            </label>
+        </div>
+        <div>
+            Name: <input type="text" value="Can't touch this." disabled>
+            Name: <input type="text" value="Can't touch this." disabled="true">
+            Name: <input type="text" value="Can't touch this." disabled="false">
+        </div>
+        <div>
+            Name: <input type="text" value="Nope." readonly>
+        </div>
+        <div>
+            Favorite Color:<br>
+            <label>Red: <input type="checkbox" name="cmeolor" value="red" /><br></label>
+            <label>Orange: <input type="checkbox" name="color" value="orange" /><br></label>
+            <label>Yellow: <input type="checkbox" name="color" value="yellow" /><br></label>
+            <label>Blue: <input type="checkbox" name="color" value="blue" checked /><br></label>
+            <label>Green: <input type="checkbox" name="color" value="green" /><br></label>
+            <label>Indigo: <input type="checkbox" name="color" value="indigo" /><br></label>
+            <label>Violet: <input type="checkbox" name="color" value="violet" /><br></label>
+        </div>
+        <div>
+            Favorite Fruit:<br>
+            <label>Apple: <input type="radio" name="fruit" value="apple" /><br></label>
+            <label>Banana: <input type="radio" name="fruit" value="banana" /><br></label>
+            <label>Cherry: <input type="radio" name="fruit" value="cherry" /><br></label>
+
+            <label>Spinach: <input type="radio" name="vegetable" value="spinach" /><br></label>
+            <label>Lettuce: <input type="radio" name="vegetable" value="lettuce" /><br></label>
+
+            <label>Bicycle: <input type="radio" value="bicycle" /><br></label>
+            <label>Skateboard: <input type="radio" value="skateboard" /><br></label>
+        </div>
+        <div>
+            <label>Please update your profile pic: <input type="file"></label>
+        </div>
+        <div>
+            <label>Enter a number: <input type="number" name="random_num" min="9" max="20"></label>
+            <label>Enter a time: <input type="time" name="open_hours" min="09:00" max="20:00"></label>
+        </div>
+        <div>
+            <select>
+                <option value="">선택</option>
+                <option value="직접입력">직접입력</option>
+                <option value="naver.com">naver.com</option>
+                <option value="hanmail.net">hanmail.net</option>
+                <option value="gmail.com">gmail.com</option>
+                <option value="nate.com">nate.com</option>
+                <option value="daum.net">daum.net</option>
+                <option value="hotmail.com">hotmail.com</option>
+                <option value="bill36524.com">bill36524.com</option>
+                <option value="korea.com">korea.com</option>
+                <option value="empal.com">empal.com</option>
+                <option value="chol.com">chol.com</option>
+                <option value="paran.com">paran.com</option>
+                <option value="chollian.net">chollian.net</option>
+                <option value="dreamwiz.com">dreamwiz.com</option>
+                <option value="unitel.co.kr">unitel.co.kr</option>
+                <option value="yahoo.co.kr">yahoo.co.kr</option>
+                <option value="empas.com">empas.com</option>
+                <option value="hanafos.com">hanafos.com</option>
+                <option value="yahoo.com">yahoo.com</option>
+                <option value="bestbill.co.kr">bestbill.co.kr</option>
+                <option value="msn.com">msn.com</option>
+                <option value="kakao.com">kakao.com</option>
+            </select>
+        </div>
+        <input type="submit">
+    </form>
+</body>
+
+</html>
