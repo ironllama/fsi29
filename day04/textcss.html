@@ -7,10 +7,15 @@
     <title>Document</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Jersey+15&display=swap');
+
+        @font-face {
+            font-family: NeatFont;
+            src: url('./Nickova.ttf');
+        }
     </style>
 </head>
 
-<body>
+<body style="margin: 0; position: relative; height: 100vh; background-size: 250vw 100vh; background-image: radial-gradient(farthest-side at 58vw 248vh, gold 60%, white 66%, cornflowerblue 79%, midnightblue 91%, black)">
     <div>
         The quick fox jumps over the sleeping dog.
     </div>
@@ -37,13 +42,24 @@
 
     <a style="text-decoration: none; cursor: none;" href="https://google.com">Go to Google</a>
 
-    <div style="width: 150px; height: 150px; background-color: cornflowerblue; cursor: pointer;"></div>
+    <div style="width: 150px; height: 150px; background-color: firebrick; cursor: pointer; border-radius: 10px;"></div>
 
     <p>
         I'm so <span style="color:lightgray; font-family: 'Jersey 15';">sleepy</span> right now.
     </p>
 
     I'm so <div style="display: inline; color:lightgray; font-family: 'Jersey 15';">sleepy</div> right now.
+
+    <p style="font-family: NeatFont, fantasy; font-size: 2em;">
+        This is a neat font.
+    </p>
+
+    <div style="position: absolute; bottom: 0px; display: flex; align-items: flex-end;">
+        <div style="display: inline-block; width: 150px; height: 100px; background-color: black;"></div>
+        <div style="display: inline-block; width: 200px; height: 25px; background-color: black;"></div>
+        <div style="display: inline-block; width: 175px; height: 50px; background-color: black;"></div>
+        <div style="display: inline-block; width: 200px; height: 35px; background-color: black;"></div>
+    </div>
 </body>
 
 </html>
