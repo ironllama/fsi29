@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model</title>
+</head>
+
+<body>
+    <section style="width: 1000px; margin: 20px auto;">
+        <h3 style="text-align: center;">Space, the final frontier?</h3>
+        <p>
+            The green, yellow, and white areas below should be the same height! However, it seems something has happened to the white area. Find out what happened and fix it, so that green, yellow, and white are the same height and the three together are the same height as the blue area.
+        </p>
+        <table style="width: 300px; margin: 30px auto; border-spacing: 0;">
+            <tr>
+                <td rowspan="2" style="height: 150px; background-color: blue; padding: 0;">
+                    <div style="height: 150px; background-color: blue;"></div>
+                </td>
+                <td style="vertical-align: top; padding: 0;">
+                    <div style="display: inline-block; width: 100%;">
+                        <div style="height: 50px; margin-bottom: 25px; background-color: green;"></div>
+                    </div>
+                    <div style="height: 50px; margin-top: 25px; background-color: yellow;"></div>
+                </td>
+            </tr>
+        </table>
+    </section>
+    <section style="width: 1000px; margin: 50px auto;">
+        <h3 style="text-align: center;">Book exerpt</h3>
+        <p>
+            You have an book exerpt for a space geeks website and it MUST fit within a 800px width area. The excerpt consists of an image that takes up exactly half the width, and the text blurb with the other half. However, when putting in the text blurb, it looks not so great, crammed to the bottom without any "breathing room" around the text. Restructure the code below so that the text blurb will:
+        </p>
+        <ul>
+            <li>move to the top of the right section, so it matches the top of the image</li>
+            <li>add a 20px gutter space between the image and the text</li>
+            <li>add a dotted border around the text in bisque color, with a width of 1px</li>
+            <li>use a sans-serif font</li>
+            <li>provide some extra space between lines in the text to make it more pleasant to read</li>
+            <li>you may not remove any existing CSS styles, only add to it</li>
+        </ul>
+        <div style="width: 800px; margin: 30px auto;">
+            <img style="display: inline-block; width: 400px; vertical-align: top;" src="https://m.media-amazon.com/images/I/81wFMY9OAFL._AC_UF1000,1000_QL80_.jpg"><div style="display: inline-block; width: 400px; line-height: 1.5rem; font-family: sans-serif; border: 1px dotted bisque; box-sizing: border-box; padding-left: 20px;">
+                Our main communications dish, which relayed signals from the Hab to Hermes, acted like a parachute, getting torn from its foundation and carried with the torrent. Along the way, it crashed through the reception antenna array. Then one of those long thin antennae slammed into me end-first. It tore through my suit like a bullet through butter, and I felt the worst pain of my life as it ripped open my side. I vaguely remember having the wind knocked out of me (pulled out of me, really) and my ears popping painfully as the pressure of my suit escaped.
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
