@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 16px;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select a color</title>
+</head>
+
+<body style="height: 100vh;">
+    <h3>Version with px sizes</h3>
+    <!-- Outer div -->
+    <div style="
+        width: 200px;
+        border: 1px solid firebrick;
+        border-radius: 5px;
+        padding: 5px;
+        ">
+        <!-- Top row: icon and select -->
+        <div>
+            <svg style="
+                margin-right: 1px;
+                vertical-align: bottom;
+                height: 17px;
+                fill: firebrick
+                ;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                <path d="M512 256c0 .9 0 1.8 0 2.7c-.4 36.5-33.6 61.3-70.1 61.3L344 320c-26.5 0-48 21.5-48 48c0 3.4 .4 6.7 1 9.9c2.1 10.2 6.5 20 10.8 29.9c6.1 13.8 12.1 27.5 12.1 42c0 31.8-21.6 60.7-53.4 62c-3.5 .1-7 .2-10.6 .2C114.6 512 0 397.4 0 256S114.6 0 256 0S512 114.6 512 256zM128 288a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm0-96a32 32 0 1 0 0-64 32 32 0 1 0 0 64zM288 96a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm96 96a32 32 0 1 0 0-64 32 32 0 1 0 0 64z" />
+            </svg>
+            <select style="width: 178px;">
+                <option>firebrick</option>
+                <option>cornflowerblue</option>
+                <option>beige</option>
+                <option>chartreuse</option>
+                <option>gold</option>
+                <option>skyblue</option>
+            </select>
+        </div>
+        <!-- Diplay box -->
+        <div style="
+            border-radius: 5px;
+            margin-top: 5px;
+            height: 100px;
+            background-color: firebrick
+            ;"></div>
+    </div>
+
+    <hr>
+    <h3>Version with percent sizes</h3>
+    <!-- Outer div -->
+    <div style="
+        box-sizing: border-box;
+        width: 215px;
+        height: 156px;
+        ">
+        <div style="
+        box-sizing: border-box;
+        width: 100%;
+        border: 1px solid firebrick;
+        border-radius: 2.15%;
+        padding: 2.15%;
+        height: 100%;
+        ">
+            <!-- Top row: icon and select -->
+            <div>
+                <svg style="
+                margin-right: 1px;
+                vertical-align: bottom;
+                width: 8.49%;
+                fill: firebrick
+                ;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <path d="M512 256c0 .9 0 1.8 0 2.7c-.4 36.5-33.6 61.3-70.1 61.3L344 320c-26.5 0-48 21.5-48 48c0 3.4 .4 6.7 1 9.9c2.1 10.2 6.5 20 10.8 29.9c6.1 13.8 12.1 27.5 12.1 42c0 31.8-21.6 60.7-53.4 62c-3.5 .1-7 .2-10.6 .2C114.6 512 0 397.4 0 256S114.6 0 256 0S512 114.6 512 256zM128 288a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm0-96a32 32 0 1 0 0-64 32 32 0 1 0 0 64zM288 96a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm96 96a32 32 0 1 0 0-64 32 32 0 1 0 0 64z" />
+                </svg>
+                <select style="width: 88%;">
+                    <option>firebrick</option>
+                    <option>cornflowerblue</option>
+                    <option>beige</option>
+                    <option>chartreuse</option>
+                    <option>gold</option>
+                    <option>skyblue</option>
+                </select>
+            </div>
+            <!-- Diplay box -->
+            <div style="
+            box-sizing: border-box;
+            border-radius: 2.5%;
+            margin-top: 2.5%;
+            height: 82%;
+            background-color: firebrick
+            ;"></div>
+        </div>
+    </div>
+
+    <hr>
+    <h3>Version with rem sizes</h3>
+    <!-- Outer div -->
+    <div style="
+        width: 12.5rem;
+        border: 1px solid firebrick;
+        border-radius: .315rem;
+        padding: 0.312rem;
+        ">
+        <!-- Top row: icon and select -->
+        <div>
+            <svg style="
+                margin-right: 1px;
+                vertical-align: bottom;
+                width: 1rem;
+                fill: firebrick
+                ;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                <path d="M512 256c0 .9 0 1.8 0 2.7c-.4 36.5-33.6 61.3-70.1 61.3L344 320c-26.5 0-48 21.5-48 48c0 3.4 .4 6.7 1 9.9c2.1 10.2 6.5 20 10.8 29.9c6.1 13.8 12.1 27.5 12.1 42c0 31.8-21.6 60.7-53.4 62c-3.5 .1-7 .2-10.6 .2C114.6 512 0 397.4 0 256S114.6 0 256 0S512 114.6 512 256zM128 288a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm0-96a32 32 0 1 0 0-64 32 32 0 1 0 0 64zM288 96a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm96 96a32 32 0 1 0 0-64 32 32 0 1 0 0 64z" />
+            </svg>
+            <select style="width: 11.125rem;">
+                <option>firebrick</option>
+                <option>cornflowerblue</option>
+                <option>beige</option>
+                <option>chartreuse</option>
+                <option>gold</option>
+                <option>skyblue</option>
+            </select>
+        </div>
+        <!-- Diplay box -->
+        <div style="
+            border-radius: 0.312rem;
+            margin-top: 0.312rem;
+            height: 6.25rem;
+            background-color: firebrick
+            ;"></div>
+    </div>
+
+    <hr>
+    <h3>Version with em sizes</h3>
+    <!-- Outer div -->
+    <div style="font-size: 10px;">
+        <div style="
+        width: 12.5em;
+        border: 1px solid firebrick;
+        border-radius: .315em;
+        padding: 0.312em;
+        ">
+            <!-- Top row: icon and select -->
+            <div>
+                <svg style="
+                margin-right: 1px;
+                vertical-align: bottom;
+                width: 1em;
+                fill: firebrick
+                ;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <path d="M512 256c0 .9 0 1.8 0 2.7c-.4 36.5-33.6 61.3-70.1 61.3L344 320c-26.5 0-48 21.5-48 48c0 3.4 .4 6.7 1 9.9c2.1 10.2 6.5 20 10.8 29.9c6.1 13.8 12.1 27.5 12.1 42c0 31.8-21.6 60.7-53.4 62c-3.5 .1-7 .2-10.6 .2C114.6 512 0 397.4 0 256S114.6 0 256 0S512 114.6 512 256zM128 288a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm0-96a32 32 0 1 0 0-64 32 32 0 1 0 0 64zM288 96a32 32 0 1 0 -64 0 32 32 0 1 0 64 0zm96 96a32 32 0 1 0 0-64 32 32 0 1 0 0 64z" />
+                </svg>
+                <select style="width: 11.125em; font-size: inherit;">
+                    <option>firebrick</option>
+                    <option>cornflowerblue</option>
+                    <option>beige</option>
+                    <option>chartreuse</option>
+                    <option>gold</option>
+                    <option>skyblue</option>
+                </select>
+            </div>
+            <!-- Diplay box -->
+            <div style="
+            border-radius: 0.312em;
+            margin-top: 0.312em;
+            height: 6.25em;
+            background-color: firebrick
+            ;"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>
