@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadows</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+        /* This applies to all HTML tags of type body (there is only one in a valid html) */
+        body {
+            font-family: Roboto, sans-serif;
+        }
+
+        /* Apply these CSS properties to an element with the id of "topblue" */
+        #topblue {
+            margin: auto;
+            width: 150px;
+            height: 150px;
+            background-color: cornflowerblue;
+            box-shadow: 0 0 black;
+        }
+
+        .bigwhitetext {
+            font-weight: 700;
+            color: white;
+            font-size: 2.2em;
+            letter-spacing: 2px;
+        }
+
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: orangered;
+        }
+
+        .center {
+            margin: auto;
+        }
+
+        .orangebank_boxshadow {
+            box-shadow: 50px 45px black;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="topblue"></div>
+    <br>
+    <div class="orangebank_boxshadow center box bigwhitetext">
+        <!-- This element has no width. It's only there to establish a lower baseline. -->
+        <span style="display: inline-block; height: 85px;"></span>
+        <span>orange</span>
+        <span style="display: inline-block; padding-left: 46px; padding-top: 7px;">bank</span>
+    </div>
+    <br>
+    <div>
+        <img style="width: 150px;" src="https://imgs.search.brave.com/FYmsuChFcB46GmHEP9uO7qHz1b2vSK1YhJWr8s8m7sM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA3LzE4LzA0LzYz/LzM2MF9GXzcxODA0/NjM2NF9rWGtTWGJG/dVZHeHNBNXVxZFlj/S0Q5SllIMlVrTjVi/Ui5qcGc" alt="stained glass" />
+        This is a windowing.
+    </div>
+    <br>
+    <div style="position: relative; background-color: black;" class="center box bigwhitetext">
+        <div style="padding: 73% 0 0 3%;">bank</div>
+        <div style="
+            position: absolute;
+            top: -50px;
+            left: -45px;
+        " class="center box">
+            <div style="padding: 69% 7%;">orange</div>
+        </div>
+    </div>
+    <br>
+    <div style="position: relative;" class="bigwhitetext">
+        <div class="center box">
+            <div style="
+                position: absolute;
+                top: 103px;
+                left: 258px;
+            ">orange</div>
+        </div>
+        <div style="
+            position: absolute;
+            top: 45px;
+            left: 297px;
+            z-index: -1;
+            background-color: black;
+            box-shadow: 10px 10px 10px darkgrey, -32px -30px 15px darkgray;;
+            " class="box">
+            <div style="
+                position: absolute;
+                top: 111px;
+                left: 5px;
+            ">bank</div>
+        </div>
+    </div>
+
+    <br>
+    <div>
+        <img style="width: 150px; box-shadow: 0px -10px 20px darkgray;" src="https://imgs.search.brave.com/FYmsuChFcB46GmHEP9uO7qHz1b2vSK1YhJWr8s8m7sM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA3LzE4LzA0LzYz/LzM2MF9GXzcxODA0/NjM2NF9rWGtTWGJG/dVZHeHNBNXVxZFlj/S0Q5SllIMlVrTjVi/Ui5qcGc" alt="stained glass" />
+        This is a windowing.
+    </div>
+    <br>
+    <div style="position: relative;">
+        <div class="center box" style="
+                box-shadow: inset 0px 0px 20px 5px black;
+            ">
+        </div>
+</body>
+
+</html>
