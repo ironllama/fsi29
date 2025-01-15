@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More Shadow</title>
+    <style>
+        .first {
+            text-shadow: 3px 3px 5px firebrick;
+        }
+
+        .second {
+            color: white;
+            text-shadow: 1px 1px 10px black;
+        }
+
+        /* General classes for all the pineapple pics. */
+        .p-outer {
+            position: relative;
+            width: 400px;
+        }
+
+        .p-outer img {
+            width: 100%;
+        }
+
+        .p-outer span {
+            position: absolute;
+            left: 0;
+            bottom: .75rem;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        /* Specific properties to make the text easier to read. */
+        .overlay span {
+            bottom: 4px;
+            padding: 1rem;
+            background-color: rgb(0, 0, 0, 0.4);
+        }
+
+        .textshadow span {
+            text-shadow: 0 0 7px black;
+        }
+
+        .gradient span {
+            bottom: 4px;
+            padding: 2rem 0 1rem;
+            /* background-color: rgb(0, 0, 0, 0.4); */
+            background-image: linear-gradient(to top, rgb(0, 0, 0, 0.4), rgb(0, 0, 0, 0.4) 69%, transparent);
+        }
+
+        .lots {
+            text-shadow: 0 0 3px red, 0 0 9px orange, 0 0 18px yellow;
+            /* , 0 0 12px green, 0 0 15px blue, 0 0 18px indigo, 0 0 21px violet; */
+        }
+
+        .drop {
+            background-color: cornflowerblue;
+        }
+
+        .drop img {
+            width: 200px;
+        }
+
+        .drop .one {
+            box-shadow: 5px 5px 10px black;
+        }
+
+        .drop .two {
+            filter: drop-shadow(5px 5px 10px black);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="hello" class="first">Maybe not.</div>
+    <div class="second">Josh is hungry.</div>
+    <div class="p-outer">
+        <img src="https://imgs.search.brave.com/enF5I43yR4_su8lhdYw9mmbkt9zzWhBBSfljHjcnIOY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9idXJz/dC5zaG9waWZ5Y2Ru/LmNvbS9waG90b3Mv/cGluZWFwcGxlcy1w/b29scy5qcGc_d2lk/dGg9MTAwMCZmb3Jt/YXQ9cGpwZyZleGlm/PTAmaXB0Yz0w" alt="pineapple" />
+        <span>Mmm... pineapples and chlorine.</span>
+    </div>
+    <div class="p-outer overlay">
+        <img src="https://imgs.search.brave.com/enF5I43yR4_su8lhdYw9mmbkt9zzWhBBSfljHjcnIOY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9idXJz/dC5zaG9waWZ5Y2Ru/LmNvbS9waG90b3Mv/cGluZWFwcGxlcy1w/b29scy5qcGc_d2lk/dGg9MTAwMCZmb3Jt/YXQ9cGpwZyZleGlm/PTAmaXB0Yz0w" alt="pineapple" />
+        <span>Mmm... pineapples and chlorine.</span>
+    </div>
+    <div class="p-outer textshadow">
+        <img src="https://imgs.search.brave.com/enF5I43yR4_su8lhdYw9mmbkt9zzWhBBSfljHjcnIOY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9idXJz/dC5zaG9waWZ5Y2Ru/LmNvbS9waG90b3Mv/cGluZWFwcGxlcy1w/b29scy5qcGc_d2lk/dGg9MTAwMCZmb3Jt/YXQ9cGpwZyZleGlm/PTAmaXB0Yz0w" alt="pineapple" />
+        <span>Mmm... pineapples and chlorine.</span>
+    </div>
+    <div class="p-outer gradient">
+        <img src="https://imgs.search.brave.com/enF5I43yR4_su8lhdYw9mmbkt9zzWhBBSfljHjcnIOY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9idXJz/dC5zaG9waWZ5Y2Ru/LmNvbS9waG90b3Mv/cGluZWFwcGxlcy1w/b29scy5qcGc_d2lk/dGg9MTAwMCZmb3Jt/YXQ9cGpwZyZleGlm/PTAmaXB0Yz0w" alt="pineapple" />
+        <span>Mmm... pineapples and chlorine.</span>
+    </div>
+    <div class="lots">Cookies are good.</div>
+    <div class="drop">
+        <img class="one" src="./pineapple.png" alt="pineapple" />
+        <img class="two" src="./pineapple.png" alt="pineapple" />
+    </div>
+</body>
+
+</html>
