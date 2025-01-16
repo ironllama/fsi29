@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectors</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            background-color: cornflowerblue;
+        }
+
+        input[name*="lu"] {
+            background-color: red;
+        }
+
+        div>span {
+            background-color: olivedrab;
+        }
+
+        div span {
+            background-color: cyan;
+        }
+
+        /* div span:nth-child(5) {
+            background-color: firebrick;
+        }
+
+        div .fourth+span {
+            background-color: bisque;
+        } */
+
+        div>span>span.fourth {
+            background-color: yellow;
+        }
+
+        .fourth~span {
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text">
+    <input type="date" name="blue" checked>
+    <input type="color" name="blueyes">
+    <div>
+        <span>
+            Span #1, in the div.
+            <span>Span #2, in the span that's in the div.</span>
+            <span>Span #2b, in the span that's in the div.</span>
+            <span>Span #2c, in the span that's in the div.</span>
+            <span class="fourth">Span #2d, in the span that's in the div.</span>
+            <span>Span #2e, in the span that's in the div.</span>
+            <span>Span #2f, in the span that's in the div.</span>
+            <p>
+                <span>Span #2g</span>
+            </p>
+        </span>
+        <p>
+            <span>Span #1b</span>
+        </p>
+    </div>
+    <span>Span #3, not in the div at all.</span>
+</body>
+
+</html>
