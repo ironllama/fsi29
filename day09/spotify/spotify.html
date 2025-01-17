@@ -150,7 +150,7 @@
         }
 
         aside,
-        section {
+        #popularlists {
             border-radius: 10px;
             padding: 0.5em;
             background-color: #121212;
@@ -199,7 +199,8 @@
 
         aside .tile h4 {
             margin: -0.5em 0 0.5em 0;
-            font-size: 1.1em;
+            font-family: spotify-bold, spotify, sans-serif;
+            font-size: 1em;
         }
 
         aside .tile div {
@@ -209,18 +210,53 @@
 
         aside .tile button {
             font-weight: bold;
-            padding: 0 1em;
+            padding: 0 1.25em;
             height: 2.5em;
             border-radius: 1.25em;
         }
 
-        section {
+        #popularlists {
+            padding: 0;
             margin-left: 0.5em;
-            padding: 1em;
-            height: 900px;
+            margin-top: 0;
+            overflow: hidden;
         }
 
-        section .rowhead {}
+        section {
+            box-sizing: border-box;
+            margin-bottom: 2em;
+            /* margin-left: 0.5em; */
+            padding: 0.1em 1.5em;
+        }
+
+        section .rowhead {
+            font-family: spotify-bold, spotify, sans-serif;
+            margin: 0.5em 0;
+        }
+
+        section .musicTile {
+            display: inline-block;
+            width: 15.3%;
+            margin: 0.5em;
+        }
+
+        section .musicTile>img {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        section .circle .musicTile img {
+            border-radius: 50%;
+        }
+
+        section .rowitems .musicTitle {
+            font-size: 0.9em;
+            color: rgb(179, 179, 179);
+        }
+
+        #popularlists section:first-child {
+            background-image: linear-gradient(to top, #121212, #1f1f1f)
+        }
     </style>
 </head>
 
@@ -293,14 +329,107 @@
                     </aside>
                 </td>
                 <td>
-                    <section>
-                        <div class="mainrow">
-                            <div class="rowhead">Popular artists</div>
-                            <div class="rowitems">
-
+                    <div id="popularlists">
+                        <section>
+                            <h2 class="rowhead">Popular artists</h2>
+                            <div class="rowitems circle">
+                                <div class="musicTile">
+                                    <img src="./artist-rose.jpg" alt="rose" />
+                                    <div class="popularName">ROSÉ</div>
+                                    <div class="musicTitle">Artist</div>
+                                </div>
+                                <div class="musicTile">
+                                    <img src="./artist-aespa.jpg" alt="rose" />
+                                    <div class="popularName">aespa</div>
+                                    <div class="musicTitle">Artist</div>
+                                </div>
+                                <div class="musicTile">
+                                    <img src="./artist-newjeans.jpg" alt="rose" />
+                                    <div class="popularName">NewJeans</div>
+                                    <div class="musicTitle">Artist</div>
+                                </div>
+                                <div class="musicTile">
+                                    <img src="./artist-gdragon.jpg" alt="rose" />
+                                    <div class="popularName">G-DRAGON</div>
+                                    <div class="musicTitle">Artist</div>
+                                </div>
+                                <div class="musicTile">
+                                    <img src="./artist-day6.jpg" alt="rose" />
+                                    <div class="popularName">DAY6</div>
+                                    <div class="musicTitle">Artist</div>
+                                </div>
+                                <div class="musicTile">
+                                    <img src="./artist-bigbang.jpg" alt="rose" />
+                                    <div class="popularName">BIGBANG</div>
+                                    <div class="musicTitle">Artist</div>
+                                </div>
                             </div>
-                        </div>
-                    </section>
+                        </section>
+                        <section>
+                            <h2 class="rowhead">Popular albums and singles</h2>
+                            <div class="rowitems">
+                                <div class="musicTile">
+                                    <img src="./album-jimin-muse.jpg" alt="rose" />
+                                    <div class="albumName">Muse</div>
+                                    <div class="musicTitle">Jimin</div>
+                                </div>
+                                <div class="musicTile">
+                                    <img src="./album-jungkook-golden.jpg" alt="rose" />
+                                    <div class="albumName">Golden</div>
+                                    <div class="musicTitle">Jung Kook</div>
+                                </div>
+                                <div class="musicTile">
+                                    <img src="./album-limyoungwoong-imhero.jpg" alt="rose" />
+                                    <div class="albumName">IM HERO</div>
+                                    <div class="musicTitle">Lim Young Woong</div>
+                                </div>
+                                <div class="musicTile">
+                                    <img src="./artist-rose.jpg" alt="rose" />
+                                    <div class="albumName">rosie</div>
+                                    <div class="musicTitle">ROSÉ</div>
+                                </div>
+                                <div class="musicTile">
+                                    <img src="./album-jin-happy.jpg" alt="rose" />
+                                    <div class="albumName">Happy</div>
+                                    <div class="musicTitle">Jin</div>
+                                </div>
+                                <div class="musicTile">
+                                    <img src="./album-bigbang-made.jpg" alt="rose" />
+                                    <div class="albumName">MADE</div>
+                                    <div class="musicTitle">BIGBANG</div>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <h2 class="rowhead">Popular radio</h2>
+                            <div class="rowitems">
+                                <div class="musicTile">
+                                    <img src="./radio-iu.jpg" alt="rose" />
+                                    <div class="musicTitle">With IZ*ONE, TAEYANG, GFRIEND and more</div>
+                                </div>
+                                <div class="musicTile">
+                                    <img src="./radio-amku.jpg" alt="rose" />
+                                    <div class="musicTitle">With Paul Kim, Heize, DAY6 and more</div>
+                                </div>
+                                <div class="musicTile">
+                                    <img src="./radio-aespa.jpg" alt="rose" />
+                                    <div class="musicTitle">With LE SSERAFIM, NewJeans, KISS OF LIFE and more</div>
+                                </div>
+                                <div class="musicTile">
+                                    <img src="./radio-qwer.jpg" alt="rose" />
+                                    <div class="musicTitle">With DAY6, YENA, KyoungSeo and more</div>
+                                </div>
+                                <div class="musicTile">
+                                    <img src="./radio-newjeans.jpg" alt="rose" />
+                                    <div class="musicTitle">With LE SSERAFIM, ILLIT, KISS OF LIFE and more</div>
+                                </div>
+                                <div class="musicTile">
+                                    <img src="./radio-day6.jpg" alt="rose" />
+                                    <div class="musicTitle">With DAY6 (Even of Day), Young K, WONPIL and more</div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
                 </td>
             </tr>
         </table>

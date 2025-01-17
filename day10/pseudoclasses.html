@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo Classes</title>
+    <style>
+        div.bluebox {
+            width: 150px;
+            height: 150px;
+            /* margin: 2rem auto; */
+            margin: 1rem 0;
+            background-color: cornflowerblue;
+        }
+
+        /* p {
+            text-align: center;
+        } */
+
+        div+div.bluebox {
+            background-color: firebrick;
+        }
+
+        div~div.bluebox {
+            background-color: goldenrod;
+        }
+
+        div.bluebox:first-child {
+            background-color: olivedrab;
+        }
+
+        div:last-child.bluebox {
+            background-color: purple;
+        }
+
+        div.bluebox:last-child {
+            background-color: purple;
+        }
+
+        /* div.bluebox:nth-child() */
+
+        div.final:last-child {
+            background-color: cyan;
+        }
+
+        div.bluebox:nth-child(3) {
+            background-color: bisque;
+        }
+
+        div.bluebox:nth-child(even) {
+            background-color: gray;
+        }
+
+        div>div>div.bluebox:nth-child(2n+1) {
+            background-color: black;
+        }
+
+        /* div>div>div.bluebox:nth-of-type() */
+        input {
+            /* font-size: 1.5rem; */
+            /* background-color: firebrick; */
+            height: 1.5rem;
+            width: 20rem;
+        }
+
+        input:enabled {
+            background-color: cyan;
+        }
+
+        input:disabled {
+            background-color: pink;
+        }
+
+        input:read-only {
+            background-color: yellow;
+        }
+
+        input:required {
+            outline: 5px solid red;
+        }
+
+        input:focus {
+            outline: 5px solid blue;
+        }
+
+        a {
+            font-size: 2rem;
+        }
+
+        a:visited {
+            color: olive;
+        }
+
+        a:link {
+            color: magenta;
+        }
+
+        a:active {
+            color: yellow;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        html>body div.bluebox:hover {
+            background-color: cyan;
+            width: 300px;
+        }
+
+        body>div.bluebox:nth-child(2):hover~p {
+            background-color: magenta;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bluebox"></div>
+    <div class="bluebox"></div>
+    <div class="bluebox"></div>
+    <p>Break it up!</p>
+    <div class="bluebox"></div>
+    <div class="bluebox"></div>
+    <div style="margin-left: 10em;">
+        <div class="bluebox"></div>
+        <div class="bluebox"></div>
+        <div class="bluebox"></div>
+        <div class="bluebox final"></div>
+        <div style="margin-left:10em;">
+            <div class="bluebox"></div>
+            <div class="bluebox"></div>
+            <div class="bluebox"></div>
+            <div class="bluebox fin"></div>
+        </div>
+        <div class="bluebox"></div>
+    </div>
+    <input type="text">
+    <input type="text" disabled>
+    <input type="text" readonly>
+    <input type="text" required>
+    <input type="text">
+    <br>
+    <input type="checkbox">
+    <input type="checkbox" required>
+    <input type="checkbox" checked>
+    <input type="checkbox">
+    <input type="checkbox">
+    <br>
+    <a href="https://google.com">Click on me!</a>
+    <a href="https://ggggogle.com">Click on me!</a>
+    <a href="">Click on me!</a>
+    <a href="">Click on me!</a>
+    <a href="">Click on me!</a>
+</body>
+
+</html>
