@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Dynamic Actions</title>
+    <style>
+        .outerbox {
+            padding: 50px;
+            margin: 5em;
+        }
+
+        .bluebox {
+            width: 150px;
+            height: 150px;
+            background-color: cornflowerblue;
+            /* margin: auto; */
+        }
+
+        .bluebox:hover {
+            /* background-color: firebrick; */
+            /* width: 300px; */
+            /* margin: 5em 0; */
+        }
+
+        .outerbox:hover .bluebox {
+            background-color: firebrick;
+            /* margin: 0; */
+        }
+
+        /* #a:checked~.bluebox {
+            background-color: firebrick;
+        } */
+
+        /* #a {
+            width: 10em;
+            height: 10em;
+        } */
+
+        a {
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            font-size: 10em;
+            color: transparent;
+            background-color: cornflowerblue;
+        }
+
+        a:visited {
+            background-color: firebrick;
+        }
+
+        #a {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            top: 341px;
+            left: 4px;
+            opacity: 0;
+        }
+
+        #a:checked+.bluebox {
+            background-color: firebrick;
+        }
+
+        #parent_b {
+            display: inline-block;
+            width: 1px;
+        }
+
+        #b {
+            width: 150px;
+            height: 150px;
+            opacity: 0;
+        }
+
+        #parent_b+.bluebox {
+            display: inline-block;
+        }
+
+        #langWrapper {
+            position: relative;
+        }
+
+        .lang {
+            text-align: center;
+            font-size: 1.75em;
+            font-weight: normal;
+            vertical-align: middle;
+            /* margin-right: 1.5em; */
+        }
+
+        .lang .langcode {
+            margin-bottom: -0.5em;
+        }
+
+        .lang svg {
+            width: 1em;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            font-size: 1.75em;
+        }
+
+        li {
+            text-align: center;
+        }
+
+        #displayLang {
+            height: 57px;
+            width: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            opacity: 0;
+        }
+
+        #displayLang+ul {
+            /* display: none; */
+            opacity: 0;
+        }
+
+        #displayLang:checked+ul {
+            /* display: inline-block; */
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bluebox">
+        <div class="bluebox"></div>
+    </div>
+    <br>
+    <div class="bluebox"></div>
+    <br>
+    <input id="a" type="checkbox" />
+    <div class="bluebox">Here.</div>
+    <!-- <div class="bluebox"></div> -->
+    <br>
+    <a href="#a"></a>
+    <br>
+    <!-- <div class="bluebox"></div> -->
+    <div id="parent_b">
+        <input id="b" type="checkbox" />
+    </div>
+    <div class="bluebox"></div>
+    <br>
+    <div id="langWrapper">
+        <div class="lang">
+            <div class="langcode">EN</div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />
+            </svg>
+        </div>
+        <input id="displayLang" type="checkbox">
+        <ul>
+            <li>EN</li>
+            <li>FR</li>
+            <li>KO</li>
+            <li>SP</li>
+            <li>PT</li>
+        </ul>
+    </div>
+    <br>
+    <div style="position: relative;">
+        <label style="position: absolute; top: 0; left: 0; width: 150px; height: 150px;">
+            <input style="position: absolute; left: -30px;" type="checkbox" />
+            <div class="bluebox">Here.</div>
+        </label>
+    </div>
+    <style>
+        input:checked+.bluebox {
+            background-color: firebrick;
+        }
+    </style>
+</body>
+
+</html>

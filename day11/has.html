@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Has</title>
+    <style>
+        h1+h2 {
+            color: red;
+        }
+
+        h1:has(+ h2) {
+            color: blue;
+        }
+
+        article:has(> p) {
+            outline: 1px solid green;
+        }
+
+        div {
+            padding: 5rem;
+        }
+
+        p:hover {
+            background-color: red;
+        }
+
+        body>div {
+            background-color: pink;
+        }
+
+        body>div>div {
+            background-color: cyan;
+        }
+
+        body>div>div>div {
+            background-color: yellow;
+        }
+
+        body>div:has(p:hover) {
+            background-color: black;
+        }
+
+        /* article:first-of-type p {
+            background-color: yellow;
+        } */
+
+        /* p:first-of-type:has(#yo:hover) */
+
+        body:has(div>div>div>p:hover) article:first-of-type p {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <article>
+            <h1>Morning Times</h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+        </article>
+        <article>
+            <h1>Morning Times</h1>
+            <h2>Delivering you news every morning</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+        </article>
+    </section>
+    <div>
+        <div>
+            <div>
+                <p id="yo">Yo.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
