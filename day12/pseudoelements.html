@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elements</title>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: FontAwesome, sans-serif;
+            color: cornflowerblue;
+        }
+
+        #one p::before {
+            content: '\f007';
+            margin-right: 0.4em;
+        }
+
+        #three p::before {
+            content: "<h1>BOOM</h1>";
+        }
+
+        #four p::before {
+            content: "";
+            background-image: url('https://imgs.search.brave.com/KzL2Qupb8RPoUfbWOTV3I_MhOPp00VWNZWaFLEOnpEg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNDY2/MzY0NjcwL3ZlY3Rv/ci9zYWlsLXdpdGgt/a2VlbC1pY29uLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz1f/YURMTGQ1V0pCQUNp/LUV2akVvbms0SG9z/NFJHTmZTOTdZY25D/TTVDWHdZPQ');
+            background-size: contain;
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+        }
+
+        #five p {
+            position: relative;
+            padding-left: 1em;
+        }
+
+        #five p::before {
+            content: url('https://imgs.search.brave.com/KzL2Qupb8RPoUfbWOTV3I_MhOPp00VWNZWaFLEOnpEg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNDY2/MzY0NjcwL3ZlY3Rv/ci9zYWlsLXdpdGgt/a2VlbC1pY29uLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz1f/YURMTGQ1V0pCQUNp/LUV2akVvbms0SG9z/NFJHTmZTOTdZY25D/TTVDWHdZPQ');
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            transform: scale(0.03);
+            position: absolute;
+            top: -8px;
+            left: -9px;
+        }
+
+        #sailboatsays {
+            display: inline-block;
+            text-align: center;
+            line-height: 50px;
+            width: 250px;
+            height: 50px;
+            border-radius: 10px;
+            border: 2px solid cornflowerblue;
+            position: relative;
+        }
+
+        #sailboatsays::after {
+            content: "";
+            display: inline-block;
+            width: 0.5em;
+            height: 0.5em;
+            border-top: 2px solid cornflowerblue;
+            border-right: 2px solid cornflowerblue;
+            transform: rotate(45deg);
+            position: absolute;
+            top: 30px;
+            right: -7px;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- This paragraph, we use our own internal CSS -->
+    <div id="one">
+        <p>First paragraph.</p>
+        <p>Second paragraph.</p>
+        <p>Third paragraph.</p>
+    </div>
+
+    <!-- This paragraph, we use the classes from the external CSS from jsdelivr -->
+    <div id="two">
+        <p class="fa-user">First paragraph.</p>
+        <p class="fa-user">Second paragraph.</p>
+        <p class="fa-user">Third paragraph.</p>
+    </div>
+
+    <!-- Trying to include HTML in the content. Doesn't work. :( -->
+    <div id="three">
+        <p>First paragraph.</p>
+        <p>Second paragraph.</p>
+        <p>Third paragraph.</p>
+    </div>
+
+    <!-- Trying to include an image in the content.
+        Good, but can't resize. Need to put it as a background image. :( -->
+    <div id="four">
+        <p>First paragraph.</p>
+        <p>Second paragraph.</p>
+        <p>Third paragraph.</p>
+    </div>
+
+    <!-- Including an image and using a transform to shrink it appropriately. -->
+    <div id="five">
+        <p>First paragraph.</p>
+        <p>Second paragraph.</p>
+        <p>Third paragraph.</p>
+    </div>
+
+    <div id="sailboatsays">
+        Sailboat says, "Whee!"
+    </div>
+    <img style="height: 50px; vertical-align: middle;" src="https://imgs.search.brave.com/KzL2Qupb8RPoUfbWOTV3I_MhOPp00VWNZWaFLEOnpEg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNDY2/MzY0NjcwL3ZlY3Rv/ci9zYWlsLXdpdGgt/a2VlbC1pY29uLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz1f/YURMTGQ1V0pCQUNp/LUV2akVvbms0SG9z/NFJHTmZTOTdZY25D/TTVDWHdZPQ" alt="sailboat" />
+
+</body>
+
+</html>

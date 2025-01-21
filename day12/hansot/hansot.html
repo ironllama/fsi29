@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hansot</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: grey;
+            margin: 0;
+        }
+
+        nav {
+            padding: 0.25em 0.5em;
+            font-weight: bold;
+            width: 100%;
+            /* margin: 0 auto; */
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        #topnav,
+        #mainnav {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        #topnav {
+            font-size: 0.75em;
+            color: white;
+            text-align: right;
+            margin-bottom: 0.5em;
+        }
+
+        #topnav span {
+            padding: 1em;
+        }
+
+        #topnav svg {
+            width: 1em;
+            fill: white;
+            vertical-align: middle;
+        }
+
+        #topnav svg:last-child {
+            margin-left: 0.5em;
+        }
+
+        #mainnav {
+            background-color: white;
+            padding: 1em 2em;
+            position: relative;
+            height: 80px;
+        }
+
+        #mainnav img {
+            vertical-align: middle;
+        }
+
+        #mainitems {
+            display: inline-block;
+            list-style: none;
+            margin: 0 1.5em;
+            padding: 0;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        #mainitems li {
+            display: inline-block;
+            font-size: 0.95em;
+            margin: 0 0.75em;
+            text-transform: uppercase;
+            vertical-align: top;
+            text-align: center;
+        }
+
+        #mainitems li>div:first-child {
+            height: 80px;
+            line-height: 80px;
+        }
+
+        #mainitems li>div:first-child>div {
+            display: inline-block;
+            height: 100%;
+        }
+
+        #mainitems li:hover>div:first-child>div {
+            border-bottom: 6px solid #f6ca00;
+        }
+
+        #submenuback {
+            background-color: #eeecec;
+            height: 22em;
+            width: 1200px;
+            margin: 0 auto;
+            /* display: none; */
+            opacity: 0;
+        }
+
+        .submenu {
+            font-size: 0.8em;
+            /* display: none; */
+            opacity: 0;
+        }
+
+        .submenu>div {
+            margin-top: 2em;
+            color: #666666;
+        }
+
+        .submenu>div:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        #mainitems:hover .submenu {
+            /* display: block; */
+            opacity: 1;
+            z-index: 30;
+        }
+
+        #mainitems li:hover {
+            color: #f6ca00;
+        }
+
+        #mainnav:has(#mainitems:hover)+#submenuback {
+            /* display: block; */
+            opacity: 1;
+        }
+
+        /* Selectively only push the nav into the foreground (z-index)
+        when the submenu needs to appear. This prevents the submenu
+        from blocking the poster buttons. */
+        nav:has(#mainitems:hover) {
+            z-index: 30;
+        }
+
+        main {
+            height: 650px;
+            /* background: url('./hansot-bg1.jpg') center/cover no-repeat; */
+        }
+
+        main .viewable {
+            width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #bgselect {
+            position: absolute;
+            top: 36em;
+            left: 5.5em;
+        }
+
+        #bgselect .bgitem {
+            display: inline-block;
+            height: 0.25em;
+            width: 3em;
+            background-color: #cfc6bc;
+            margin-right: 0.25em;
+            cursor: pointer;
+        }
+
+        #bgselect .bgitem input {
+            display: none;
+        }
+
+        main:has(#bgselect .bgitem:first-child input:checked) {
+            background: url('./hansot-bg1.jpg') center/cover no-repeat;
+        }
+
+        main:has(#bgselect .bgitem:nth-child(2) input:checked) {
+            background: url('./hansot-bg2.jpg') center/cover no-repeat;
+        }
+
+        main:has(#bgselect .bgitem:nth-child(3) input:checked) {
+            background: url('./hansot-bg3.jpg') center/cover no-repeat;
+        }
+
+        #bgselect .bgitem:first-child:has(input:checked) {
+            background-color: #f6ca00;
+        }
+
+        #bgselect .bgitem:nth-child(2):has(input:checked) {
+            background-color: #f6ca00;
+        }
+
+        #bgselect .bgitem:nth-child(3):has(input:checked) {
+            background-color: #f6ca00;
+        }
+
+        main #poster {
+            width: 290px;
+            height: 450px;
+            position: absolute;
+            top: 9rem;
+            right: 0;
+            z-index: 20;
+            color: white;
+        }
+
+        main #posternav>div {
+            display: none;
+            height: 1.75em;
+            line-height: 1.75em;
+            width: 4.5em;
+            border-radius: 1em;
+            background-color: #6b6860;
+            font-weight: bold;
+            text-align: center;
+            position: absolute;
+            top: 10px;
+            right: 8px;
+        }
+
+        main #posternav svg {
+            width: 0.4em;
+            fill: white;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        main #posternav span {
+            color: #f6ca00;
+        }
+
+        main #posternav input {
+            display: none;
+        }
+
+        main #poster:has(#poster1:checked) #posternav>div:first-child {
+            display: inline-block;
+        }
+
+        main #poster:has(#poster2:checked) #posternav>div:nth-child(2) {
+            display: inline-block;
+        }
+
+        main #poster:has(#poster3:checked) #posternav>div:nth-child(3) {
+            display: inline-block;
+        }
+
+        main #poster:has(#poster1:checked) {
+            background: url('./hansot-poster1.jpg') top/contain no-repeat;
+        }
+
+        main #poster:has(#poster2:checked) {
+            background: url('./hansot-poster2.jpg') top/contain no-repeat;
+        }
+
+        main #poster:has(#poster3:checked) {
+            background: url('./hansot-poster3.jpg') top/contain no-repeat;
+        }
+
+        main #poster #posterfooter {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        main #posterfooter span {
+            display: inline-block;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        main #posterfooter span:first-child {
+            width: 200px;
+            background-color: #5c5953;
+        }
+
+        main #poster #posterclose {
+            background-color: #373737;
+            width: 90px;
+        }
+
+        main #poster #posterclose input {
+            display: none;
+        }
+
+        main #poster:has(#posterclose input:checked) {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div id="topnav">
+            한솥 창업<span>|</span>로그인<span>|</span>회원가입<span>|</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                <path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z" />
+            </svg>
+        </div>
+        <div id="mainnav">
+            <img src="https://www.hsd.co.kr/assets/images/common/h1_logo.png" alt="hansot logo" />
+            <ul id="mainitems">
+                <li>
+                    <div>
+                        <!-- These are wrapped inside another div to allow for
+                        underlining only the length of the word, instead of
+                        the width of the container. -->
+                        <div>Brand</div>
+                    </div>
+                    <div class="submenu">
+                        <div>브랜드 스토리</div>
+                        <div>브랜드 철학</div>
+                        <div>브랜드 유산</div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <div>Esg</div>
+                    </div>
+                    <div class="submenu">
+                        <div>한솥ESG경영</div>
+                        <div>세계 40대 브랜드 선정</div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <div>Menu</div>
+                    </div>
+                    <div class="submenu">
+                        <div>전체메뉴</div>
+                        <div>식재료 이야기</div>
+                        <div>페루찬차마요커피</div>
+                        <div>단체 주문</div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <div>Store</div>
+                    </div>
+                    <div class="submenu">
+                        <div>주변점포찾기</div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <div>Event</div>
+                    </div>
+                    <div class="submenu">
+                        <div>이 달의 이벤트</div>
+                        <div>신규점 오픈이벤트</div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <div>Franchise</div>
+                    </div>
+                    <div class="submenu">
+                        <div>한솥 창업</div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <div>Hansot</div>
+                    </div>
+                    <div class="submenu">
+                        <div>한솥의 약속</div>
+                        <div>한솥의 비전</div>
+                        <div>연혁&수상</div>
+                        <div>한솥 NEWS</div>
+                        <div>오시는 길</div>
+                        <div>고객센터</div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <div>Recruit</div>
+                    </div>
+                    <div class="submenu">
+                        <div>조직문화</div>
+                        <div>인사제도</div>
+                        <div>채용정보</div>
+                        <div>직무소개</div>
+                        <div>입사지원</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="submenuback"></div>
+    </nav>
+    <main>
+        <div class="viewable">
+            <div id="bgselect">
+                <label class="bgitem"><input type="radio" name="bg" checked /></label>
+                <label class="bgitem"><input type="radio" name="bg" /></label>
+                <label class="bgitem"><input type="radio" name="bg" /></label>
+            </div>
+            <div id="poster">
+                <div id="posternav">
+                    <div>
+                        <label for="">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                <path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+                            </svg>
+                        </label>
+                        <span>1</span> / 3
+                        <label for="poster2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div>
+                        <label for="poster1">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                <path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+                            </svg>
+                        </label>
+                        <span>2</span> / 3
+                        <label for="poster3">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <div>
+                        <label for="poster2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                <path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+                            </svg>
+                        </label>
+                        <span>3</span> / 3
+                        <label for="">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
+                            </svg>
+                        </label>
+                    </div>
+                    <input id="poster1" type="radio" name="posternum" checked />
+                    <input id="poster2" type="radio" name="posternum" />
+                    <input id="poster3" type="radio" name="posternum" />
+                </div>
+                <div id="posterfooter"><span>하루동안 보지 않기</span><span id="posterclose"><label>닫기<input type="checkbox" /></label></span></div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

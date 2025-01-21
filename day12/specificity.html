@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specificity</title>
+    <style>
+        /* div.one {
+            color: green;
+        } */
+
+        .last {
+            color: yellow;
+        }
+
+        div>p {
+            color: red;
+            /* color: red !important; */
+            font-family: sans-serif;
+        }
+
+        body p {
+            color: green;
+        }
+
+        #uno.two p.last {
+            color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one">
+        <p>Hello</p>
+    </div>
+    <div id="uno" class="two">
+        <p class="last" style="color: pink;">Goodbye</p>
+    </div>
+</body>
+
+</html>
