@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex</title>
+    <style>
+        body>div {
+            /* width: 400px; */
+            width: 90%;
+            height: 400px;
+            margin: 2em auto;
+            border: 2px solid firebrick;
+        }
+
+        .bluebox {
+            width: 150px;
+            height: 150px;
+            background-color: cornflowerblue;
+        }
+
+        /* #first {
+            padding: 75px;
+            box-sizing: border-box;
+        } */
+
+        #first .bluebox {
+            margin: 75px auto;
+        }
+
+        #second {
+            position: relative;
+        }
+
+        #second .bluebox {
+            position: relative;
+            top: 75px;
+            left: 125px;
+        }
+
+        #third {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .singlerow {
+            height: 150px;
+            display: flex;
+            /* flex-direction: row-reverse; */
+            /* flex-direction: column; */
+            /* justify-content: flex-start; */
+            justify-content: space-around;
+        }
+
+        #fourth .bluebox {
+            /* display: inline-block; */
+        }
+
+        #fifth {
+            justify-content: space-between;
+        }
+
+        #sixth {
+            justify-content: space-evenly;
+        }
+
+        #seventh {
+            justify-content: center;
+        }
+
+        #eighth .bluebox {
+            flex: 1;
+        }
+
+        #ninth .bluebox {
+            flex: 1;
+        }
+
+        #ninth .bluebox:nth-child(2) {
+            flex: 2;
+        }
+
+        #tenth .bluebox {
+            flex: 0 1 300px;
+        }
+
+        #tenth .bluebox:nth-child(2) {
+            flex: 0 2 300px;
+        }
+
+        #eleventh .bluebox:first-child {
+            width: 200px;
+        }
+
+        #eleventh .bluebox:not(:first-child) {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="first">
+        <div class="bluebox"></div>
+    </div>
+    <div id="second">
+        <div class="bluebox"></div>
+    </div>
+    <div id="third">
+        <div class="bluebox"></div>
+    </div>
+
+    Space Around:
+    <div id="fourth" class="singlerow">
+        <div class="bluebox"></div>
+        <div style="background-color: olivedrab;" class="bluebox"></div>
+        <div style="background-color: goldenrod;" class="bluebox"></div>
+    </div>
+    Space Between
+    <div id="fifth" class="singlerow">
+        <div class="bluebox"></div>
+        <div style="background-color: olivedrab;" class="bluebox"></div>
+        <div style="background-color: goldenrod;" class="bluebox"></div>
+    </div>
+    Space Evenly
+    <div id="sixth" class="singlerow">
+        <div class="bluebox"></div>
+        <div style="background-color: olivedrab;" class="bluebox"></div>
+        <div style="background-color: goldenrod;" class="bluebox"></div>
+    </div>
+
+    Center
+    <div id="seventh" class="singlerow">
+        <div class="bluebox"></div>
+        <div style="background-color: olivedrab;" class="bluebox"></div>
+        <div style="background-color: goldenrod;" class="bluebox"></div>
+    </div>
+
+    Grow 1 1 1
+    <div id="eighth" class="singlerow">
+        <div class="bluebox"></div>
+        <div style="background-color: olivedrab;" class="bluebox"></div>
+        <div style="background-color: goldenrod;" class="bluebox"></div>
+    </div>
+
+    Grow 1 2 1
+    <div id="ninth" class="singlerow">
+        <div class="bluebox"></div>
+        <div style="background-color: olivedrab;" class="bluebox"></div>
+        <div style="background-color: goldenrod;" class="bluebox"></div>
+    </div>
+
+    Shrink 1 2 1
+    <div id="tenth" class="singlerow">
+        <div class="bluebox"></div>
+        <div style="background-color: olivedrab;" class="bluebox"></div>
+        <div style="background-color: goldenrod;" class="bluebox"></div>
+    </div>
+
+    Choose your flex
+    <div id="eleventh" class="singlerow">
+        <div class="bluebox"></div>
+        <div style="background-color: goldenrod;" class="bluebox"></div>
+    </div>
+</body>
+
+</html>
