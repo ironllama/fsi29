@@ -1,0 +1,45 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100vh;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+    color: white;
+}
+
+.bluebox {
+    width: 150px;
+    height: 150px;
+    background-color: cornflowerblue;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.rotate {
+    transform: rotate(45deg);
+}
+
+/* .rotate:hover {
+    transform: rotate(45deg);
+} */
+
+.translate {
+    background-color: firebrick;
+    transform: translate(50px, -100px);
+}
+
+.scale {
+    background-color: olivedrab;
+    transform: scale(1.75) rotate(90deg);
+}
+
+.skew {
+    background-color: goldenrod;
+    transform: skew(15deg, 0);
+}

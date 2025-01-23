@@ -1,0 +1,136 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+main {
+    width: 100%;
+}
+
+main>div {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+main>div:nth-child(odd) {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+.thegroup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 2em;
+}
+
+main>div>* {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    font-family: sans-serif;
+    font-size: 3em;
+    font-weight: bold;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+p {
+    border: 1px solid firebrick;
+    padding: 0.25em;
+    margin: 0;
+    background-color: white;
+}
+
+.bluebox {
+    background-color: cornflowerblue;
+}
+
+.blur {
+    filter: blur(3px);
+}
+
+.bright {
+    filter: brightness(50%);
+}
+
+.grayscale {
+    filter: grayscale(75%);
+}
+
+.huerotate {
+    filter: hue-rotate(90deg);
+}
+
+.invert {
+    filter: invert(100%);
+}
+
+.opacity {
+    filter: opacity(50%);
+}
+
+.sepia {
+    filter: sepia(75%);
+}
+
+body>label.annoy {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: fantasy;
+    font-weight: normal;
+    font-size: 5em;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    top: calc(50vh - 200px);
+    left: calc(50vw - 200px);
+    z-index: 10;
+}
+
+body>label.annoy input {
+    display: none;
+}
+
+body>label.annoy:has(input:checked) {
+    display: none;
+}
+
+body:has(.annoy input:not(:checked)) {
+    overflow: hidden;
+}
+
+body:has(.annoy input:not(:checked)) main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 10;
+}
+
+body:has(.annoy input:not(:checked)) main {
+    filter: blur(5px);
+}

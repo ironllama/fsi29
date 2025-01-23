@@ -1,0 +1,270 @@
+@font-face {
+    font-family: montreal;
+    src: url("./montreal.woff");
+}
+
+@font-face {
+    font-family: montreal;
+    src: url("./montreal-bold.woff");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: editorial;
+    src: url("./editorial.woff");
+}
+
+@font-face {
+    font-family: editorial;
+    src: url("./editorial-bold.woff");
+    font-weight: bold;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: montreal, sans-serif;
+    font-weight: bold;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1em 4em 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    mix-blend-mode: difference;
+}
+
+nav #navtop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: -1px;
+}
+
+nav #navtop>div:first-child {
+    font-size: 1.75em;
+}
+
+nav #navtop>ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 3.75em;
+}
+
+nav #navtop>div:last-child {
+    font-size: 1.5em;
+}
+
+nav #navbottom {
+    display: flex;
+    justify-content: space-between;
+    font-family: editorial, sans-serif;
+    font-size: 2.5em;
+}
+
+section {
+    background-color: #f9f5ec;
+    min-height: 100vh;
+}
+
+#hero {
+    background: url('./hero.png') center/cover no-repeat;
+    color: #f8fe23;
+    padding: 3em 4em 0.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#hero>div {
+    width: 100%;
+}
+
+#hero #herotitle {
+    font-size: 17em;
+    letter-spacing: -13px;
+    width: 100%;
+}
+
+#hero #herosubtitle {
+    width: 100%;
+    margin-top: -0.75em;
+    font-size: 6em;
+    letter-spacing: -5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#hero #herotext {
+    font-size: 2.25em;
+    line-height: 1em;
+    text-align: center;
+}
+
+#why {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 17em;
+    padding: 12em 3em;
+    position: relative;
+}
+
+#whytop {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#whytop>div:first-of-type {
+    margin-top: 2rem;
+    margin-bottom: 6rem;
+    font-size: 12.5em;
+    line-height: 10rem;
+    letter-spacing: -0.75rem;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 10;
+}
+
+#whytop>div:first-of-type span {
+    color: #7546ff;
+}
+
+.polaroid {
+    width: fit-content;
+    background-color: white;
+    padding: 1.5em;
+    position: relative;
+}
+
+.polaroid .polaroidpic>div {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    text-align: center;
+    font-size: 3em;
+    color: white;
+    line-height: 0.95em;
+    letter-spacing: -2px;
+    width: 100%;
+}
+
+.polaroid .polaroidtxt {
+    margin-top: 0.5em;
+    font-size: 1.75em;
+    line-height: 0.95em;
+}
+
+#whytop .polaroid {
+    background-color: #f8fe23;
+    width: 32.5em;
+    position: relative;
+}
+
+#whytop .polaroid::after {
+    content: url("heart.png");
+    position: absolute;
+    bottom: -5em;
+    left: 1em;
+}
+
+#whymid {
+    text-align: center;
+    font-family: editorial;
+    letter-spacing: -2.5px;
+}
+
+#whymid>div:first-child {
+    font-size: 2.5em;
+    margin-bottom: 50px;
+}
+
+#whymid>div:last-child {
+    font-size: 6.25em;
+    line-height: 1em;
+}
+
+#whybottom {
+    font-size: 4em;
+    text-transform: uppercase;
+    color: #7546ff;
+}
+
+#whyimgs>div {
+    position: absolute;
+}
+
+#whyimgs>div:first-child {
+    top: 655px;
+    right: 135px;
+    transform: rotate(-10deg);
+}
+
+#whyimgs>div:first-child>img:last-child {
+    position: absolute;
+    bottom: -35px;
+    right: 0;
+    transform: rotate(10deg);
+}
+
+#whyimgs>div:nth-child(2) {
+    top: 900px;
+    left: 155px;
+    transform: rotate(-18deg);
+}
+
+#whyimgs>div:nth-child(2)>img:last-child {
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+    transform: rotate(18deg);
+}
+
+#whyimgs>div:nth-child(3) {
+    top: 985px;
+    right: 260px;
+    transform: rotate(18deg);
+}
+
+#whyimgs>div:nth-child(3)>img:last-child {
+    position: absolute;
+    bottom: -60px;
+    left: 75px;
+    transform: rotate(-18deg);
+}
+
+#whyimgs>div:nth-child(4) {
+    position: absolute;
+    top: 1360px;
+    left: 10px;
+    transform: rotate(-24deg);
+}
+
+#whyimgs>div:nth-child(5) {
+    position: absolute;
+    top: 1360px;
+    right: 10px;
+    transform: rotate(24deg);
+}
