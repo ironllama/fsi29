@@ -29,6 +29,7 @@ body {
     min-height: 100vh;
     font-family: montreal, sans-serif;
     font-weight: bold;
+    overflow-x: hidden;
 }
 
 nav {

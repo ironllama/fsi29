@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vars</title>
+    <style>
+        /* You can put variables in the :root to make sure everything
+        has access to it. */
+        :root {
+            --primary-color: firebrick;
+            --alexs-fav-css-color: cornflowerblue;
+            --text-color: white;
+            --primary-font-family: sans-serif;
+        }
+
+        body {
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 2em;
+            padding: 2em;
+        }
+
+        .bluebox {
+            width: 200px;
+            height: 200px;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 0 10px white, 0 0 0 20px var(--primary-color);
+        }
+
+        .bluebox>div {}
+    </style>
+</head>
+
+<body>
+    <div class="bluebox">
+        <div>Hello!</div>
+    </div>
+</body>
+
+</html>

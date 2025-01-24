@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+
+        .bluebox {
+            width: 300px;
+            height: 300px;
+            background-color: #6495ed;
+            /* background-color: rgb(0, 0, 255); */
+            border-radius: 10px;
+            /* transition: all 2s cubic-bezier(0, 1.93, .39, -0.92); */
+            transition: margin-left 2s cubic-bezier(0, 1.93, .39, -0.92), background-color 1s 1s, opacity 2s;
+        }
+
+        div:hover>.bluebox {
+            margin-left: 600px;
+        }
+
+        label {
+            user-select: none;
+        }
+
+        label>input {
+            display: none;
+        }
+
+        label:has(input:checked) .bluebox {
+            margin-left: 600px;
+            background-color: firebrick;
+            /* background-color: rgb(255, 0, 0); */
+            /* filter: hue-rotate(240deg); */
+            opacity: 0;
+        }
+
+        body:hover div:nth-child(3)>div {
+            margin-left: 600px;
+        }
+
+        body div:nth-child(4)>div {
+            transition: all 2s steps(10);
+        }
+
+
+        #superhover {
+            width: 200px;
+            text-align: center;
+            /* border-radius: 10px; */
+            /* box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3); */
+        }
+
+        #superhover>div:first-child {
+            background-image: url('https://img.ltwebstatic.com/images3_spmp/2023/12/14/3d/1702525928ebd10fc68d6c6479816c858588fbfc28_thumbnail_405x552.jpg');
+            background-position: 0 -30px;
+            height: 200px;
+            background-size: cover;
+            border-radius: 50%;
+            overflow: hidden;
+            /* filter: drop-shadow(3px 3px 10px rbga(0, 0, 0, 0.3)); */
+            filter: drop-shadow(rgba(0, 0, 0, 0.3) 3px 3px 10px);
+            /* transition: transform 0.5s, background-image 0.5s; */
+            transition: all 0.5s;
+        }
+
+        h5 {
+            font-family: sans-serif;
+            font-weight: normal;
+            font-size: 1.5em;
+            margin: 0.5em 0;
+            padding: 0.25em;
+        }
+
+        #superhover:hover>div:first-child {
+            background-image: url('https://img.ltwebstatic.com/images3_spmp/2023/12/14/29/17025259306626ced2a5bd60b1cf0beb116733d96c_thumbnail_336x.webp');
+            background-position: 0 -42px;
+            transform: scale(1.125);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="bluebox"></div>
+    </div>
+    <label>
+        <div class="bluebox"></div>
+        <input type="checkbox" />
+    </label>
+    <div>
+        <div class="bluebox"></div>
+    </div>
+    <div>
+        <div class="bluebox"></div>
+    </div>
+
+    <div id="superhover">
+        <div></div>
+        <h5>Awesome Product</h5>
+    </div>
+</body>
+
+</html>
