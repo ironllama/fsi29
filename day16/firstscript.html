@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Script</title>
+</head>
+
+<body>
+    <script>
+        console.log("Hello, world!");  // This is a line comment.
+        // This is a line comment
+        // // This is a comment inside a comment.
+        // This is one line.
+        // This is another line.
+        /* This is one line.
+        This is another line. */
+
+        // Datatypes -- primitive, built-in
+        // number: 0, 1, 2, 3, 0.4, 0.5
+        // string: "one", "two", "3", 'hello', `hello`
+        // boolean: true, false
+
+        // Special types
+        // undefined, null
+        // Object
+        // Array, Date, etc.
+
+        console.log(1 + 1);
+        console.log(2 - 1);
+        console.log(2 * 1);
+        console.log(2 / 1);
+
+        // We can print out a string. For example as a message before other output.
+        console.log("EVEN: (8 % 2):");
+        console.log(8 % 2);
+        console.log("ODD: (9 % 2):");
+        console.log(9 % 2);
+        // console.log(-8 % 1);
+        // console.log(8 % 1);
+
+        console.log(1 === 1);
+        console.log(1 !== 1);
+        console.log(1 > 1);
+        console.log(1 >= 1);
+        console.log(1 < 1);
+        console.log(1 <= 1);
+
+        console.log(true && true);
+        console.log(false && true);
+        console.log(false || true);
+        console.log(true || false);
+
+        // You can print out a literal boolean, if required.
+        console.log(true);
+
+        var age = 25;
+        let height = 25;
+        const footsize = 25;
+
+        age = age + 1;
+        console.log("AGE:", age);
+
+        // footsize = footsize + 1;
+        // delete footsize;
+        // console.log("FOOTSIZE:", footsize);
+
+        let foot2 = footsize;
+
+        foot2 += 1; // Similar to foot = foot + 1;
+        foot2++; // Post-fix/post-increment: Similar to foot = foot + 1;
+
+        console.log("CURR FOOT2:", foot2);
+        console.log("ADD FOOT2:", 10 + (foot2 + 1));
+        console.log("POSTINCRE FOOT2:", 10 + (foot2++));
+
+        ++foot2; // Not as bad, but might as well avoid both.
+
+        // Concatenation
+        console.log("one" + "two");
+        console.log("one" + 2);
+        console.log(32 + "what");
+        console.log(32 + "5");  // Concats, NOT add
+
+        console.log(32 - "5");  // Subtracts
+        console.log(32 / "6");
+
+    </script>
+</body>
+
+</html>
