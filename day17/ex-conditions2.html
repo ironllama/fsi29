@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise - Conditions 2</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // ========================================================================
+    // Part 1:
+    // ========================================================================
+    // Declare two new variables that contain numbers of your choosing.
+    let first = 23;
+    let second = 12;
+
+    // Create an if condition that displays a message if the first variable is larger than 10
+    // Otherwise display another message
+    if (first > 10)
+      console.log(first, "is greater than 10!");
+    else
+      console.log(first, "is NOT greater than 10.");
+
+    // Create an if condition that will display the larger of the two numbers
+    if (first > second)
+      console.log("Greater:", first);
+    else 
+      console.log("Greater:", second);
+
+    // Declare 5 new variables that contain numbers of your choosing.
+    let one = 124;
+    let two = 194;
+    let three = 29;
+    let four = 57;
+    let five = 98;
+
+    // Test and find the largest number of the 5 numbers
+    if (one > two && one > three && one > four && one > five)
+      console.log(one, "is the largest");
+    else if (two > three && two > four && two > five)
+      console.log(two, "is the largest");
+    else if (three > four && three > five)
+      console.log(three, "is the largest");
+    else if (four > five)
+      console.log(four, "is the largest");
+    else
+      console.log(five, "is the largest");
+
+    // Test each of the 5 variables and display whether the number is even or odd
+    // (can use modulo %)
+    if (one % 2 === 0)
+      console.log(one, "is even")
+    else
+      console.log(one, "is odd")
+
+    if (two % 2 === 0)
+      console.log(two, "is even")
+    else
+      console.log(two, "is odd")
+
+    // ...
+
+    let evenorodd = "even";
+    if (one % 2 !== 0) evenorodd = "odd";
+    console.log(one, "is " + evenorodd);
+
+    evenorodd = "even";
+    if (two % 2 !== 0) evenorodd = "odd";
+    console.log(two, "is", evenorodd);
+
+    evenorodd = "even";
+    if (three % 2 !== 0) evenorodd = "odd";
+    console.log(three, "is", evenorodd);
+
+    evenorodd = "even";
+    if (four % 2 !== 0) evenorodd = "odd";
+    console.log(four, "is", evenorodd);
+
+    evenorodd = "even";
+    if (five % 2 !== 0) evenorodd = "odd";
+    console.log(five, "is", evenorodd);
+
+    // Test each of the 5 variables and display if a number can be divided by 5 or 8
+    // (can use modulo %)
+
+    if (one % 5 === 0 || one % 8 === 0) console.log(one, "is divisible by 5 or 8.")
+    if (two % 5 === 0 || two % 8 === 0) console.log(two, "is divisible by 5 or 8.")
+    if (three % 5 === 0 || three % 8 === 0) console.log(three, "is divisible by 5 or 8.")
+    if (four % 5 === 0 || four % 8 === 0) console.log(four, "is divisible by 5 or 8.")
+    if (five % 5 === 0 || five % 8 === 0) console.log(five, "is divisible by 5 or 8.")
+
+
+    // ========================================================================
+    // Part 2:
+    // ========================================================================
+    // Create a switch condition that will return the number of days in a given month number
+    let month = 2;
+
+    switch (month) {
+      case 2:
+        console.log("Month", month, "has 28 days.");
+        break;
+      case 4:
+      case 6:
+      case 9:
+      case 11:
+        console.log("Month", month, "has 30 days.");
+        break;
+      default:
+        console.log("Month", month, "has 31 days.");
+    }
+
+
+    let days = 28;
+    switch (month) {
+      case 2:
+        break;
+      case 4:
+      case 6:
+      case 9:
+      case 11:
+        days += 2;
+        break;
+      default:
+        days += 3;
+    }
+    console.log("Month", month, "has", days, "days.");
+
+    // Prompt a user for two new numeric variables, then prompt the user for a math operation
+    // to perform with the two numbers. (Eg. math operators include +, -, *, /)
+
+    let op1 = prompt("Enter a number:");
+    let op2 = prompt("Enter another number:");
+    // let op2 = parseInt(prompt("Enter another number:"));
+    let operation = prompt("Enter an operation: [+-*/]");
+
+    let opnum1 = parseInt(op1);
+    let opnum2 = parseInt(op2);
+
+    let result = 0;
+    if (operation === "+") {
+      result = opnum1 + opnum2;
+    } else if (operation === "-") {
+      result = opnum1 - opnum2;
+    } else if (operation === "*") {
+      result = opnum1 * opnum2;
+    } else if (operation === "/") {
+      result = opnum1 / opnum2;
+    }
+
+    // console.log(opnum1, operation, opnum2, "=", result);
+    console.log(opnum1 + " " + operation + " " + opnum2 + " = " + result);
+
+    // Then perform the requested operationg using the numbers provided.
+
+    
+    // ========================================================================
+    // BONUS:
+    // ========================================================================
+    // Create a variable that contains a number of electricity usage units in WattHrs.
+
+    // Calculate the electricity bill for the number of WattHrs, following these instructions:
+    // For the first tier, the first 50 WattHrs the cost is 0.50/WattHrs
+    // For the second tier, the next 100 WattHrs is 0.75/WattHrs
+    // For the third tier, the next 100 WattHrs is 1.20/WattHrs
+    // And for the fourth tier, all the WattHrs above the first 250 is 1.50/WattHrs
+    // Then add an additional 20% surcharge to the final cost
+    // Print out the final cost.
+    // Print out each tier's contribution to the final cost, but only if it contributes to the final cost.
+  </script>
+</body>
+</html>
