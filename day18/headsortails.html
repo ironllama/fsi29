@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heads or Tails</title>
+</head>
+
+<body>
+    <script>
+        let htEntry = prompt("Please enter heads or tails:");
+        let htActual = Math.round(Math.random());
+
+        // console.log("entry:", htEntry, "actual:", htActual);
+
+        // let htString = "";
+        // if (htActual === 0) {
+        //     htString = "heads";
+        // }
+        // else {
+        //     htString = "tails";
+        // }
+
+        let htString = "heads";
+        if (htActual === 1) htString = "tails";
+
+        // console.log("entry:", htEntry, "string:", htString);
+
+        // if (htEntry === htString) alert("Correct");
+        // else alert("Incorrect");
+
+        console.log(htEntry === htString ? "Correct" : "Incorrect")
+    </script>
+</body>
+
+</html>
