@@ -1,0 +1,155 @@
+<script>
+    // // Deterministic Loop.
+    // // Setup the changing/controlling variable
+    // let n = 0;
+
+    // while (n < 3) {  // Test the controlling variable
+    //     console.log("INSIDE LOOP: NUM:", n);
+    //     n += 1;  // Change the controlling variable
+    // }
+
+    // console.log("FINISHED");
+
+    // Non-deterministic
+    // while ((Math.random() * 10) < 5) {
+    //     console.log("Number is less than 5!");
+    // }
+
+    // let name = prompt("Enter a name:");
+
+    // while (name !== "George") {
+    //     console.log("I don't think so.");
+    //     name = prompt("Enter a name:");
+    // }
+
+    // You can internalize all the elements of the loop
+    // inside the loop, using the infinite loop w/ break
+    // while (true) {
+    //     let name = prompt("Enter a first name:");
+
+    //     if (name === "George") break;
+
+    //     console.log("I don't think so.")
+    // }
+
+
+    // let name = "";
+    // do {
+    //     if (name !== "" && name !== "George") console.log("I don't think so.");
+    //     name = prompt("Enter a name:");
+    // }
+    // while (name !== "George")
+
+    // let x = 0;
+    // while (x < 10) {
+    //     x += 1;
+
+    //     if (x === 4) continue;  // Skip rest of body. Test again.
+
+    //     if (x === 8) break;  // End the loop.
+
+    //     console.log("NUM IS:", x);
+    // }
+
+    // let x = 0;
+    // while (x < 10) {
+    //     let y = 0;
+    //     while (y < 10) {
+    //         console.log("NUM IS: " + x + y);
+    //         y += 1;
+    //     }
+
+    //     x += 1;
+    // }
+
+    // for (let x = 0; x < 10; x += 1) {
+    // for (let x = 0; x < 10; x++) {
+    //     console.log("Num is:", x);
+    // }
+
+    // let limit = 10;
+    // for (let x = 0; x < limit; x++) {
+    //     if (x === 4) continue;
+    //     if (x === 8) break;
+
+    //     console.log("Num is:", x);
+    // }
+
+    // // Same as the nested while loop above,
+    // // we can nest the for loop.
+    // for (let x = 0; x < 10; x++) {
+    //     for (let y = 0; y < 10; y++) {
+    //         console.log("NUM IS: " + x + y);
+    //     }
+    // }
+
+    // Signalling from inner loop to outer loop
+    // using a boolean variable.
+    // for (let x = 0; x < 10; x++) {
+    //     let stopOuter = false;
+
+    //     for (let y = 0; y < 10; y++) {
+    //         console.log("NUM IS: " + x + y);
+
+    //         if (x === 8 && y === 7) {
+    //             stopOuter = true;
+    //             break;
+    //         }
+    //         // if (("" + x + y) === "87") break;
+    //     }
+
+    //     if (stopOuter) break;
+    // }
+
+
+    // Labelled loop. Breaks same as above.
+    // firstDigit: for (let x = 0; x < 10; x++) {
+    //     for (let y = 0; y < 10; y++) {
+    //         console.log("NUM IS: " + x + y);
+
+    //         if (x === 8 && y === 7) {
+    //             break firstDigit;
+    //         }
+    //     }
+    // }
+
+    // for (before the loop; test each loop; after each loop)
+
+    // for (let x = 0; x < 10; x++) {
+    //     for (let y = 0; y < 10; y += 2) {
+    //         console.log("NUM IS: " + x + y);
+    //     }
+    // }
+
+    // for (let x = 0; x < 10; x++) {
+    //     for (let y = 0; y < 10; console.log("NUM IS:" + x + y++)) { }
+    // }
+
+    // for (let x = 0; true;) {
+    //     if (x === 99) break;
+    //     console.log("NUM IS:", x);
+    //     x += 3;
+    // }
+
+    // Infinite loop, for loop flavor
+    // for (; ;) {
+    //     let name = prompt("Enter a name:");
+
+    //     if (name === "George") break;
+
+    //     console.log("Try again.");
+    // }
+
+    // for (let x = 0; x < 10; x++) {
+    //     for (let y = 0; y < 10; y++) {
+    //         console.log("NUM IS: " + x + y);
+    //         y += 2;
+    //     }
+    // }
+
+    // for (let x = 10; x >= 0; x--) {
+    //     console.log("NUM IS:", x);
+    // }
+
+    console.log("FINISHED");
+</script>
