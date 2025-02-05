@@ -1,0 +1,95 @@
+<script>
+    console.log("This is a call to the function called 'log'.");
+    let newNum = parseInt("3462");
+    let something = Math.random();
+
+
+    function printHello() {
+        console.log("Hello!");
+    }
+    printHello();
+    printHello();
+
+    // Defining a function.
+    function generateRandomUpTo100() {
+        let randWithDec = Math.random() * 100;
+        let rand = Math.round(randWithDec);
+        // console.log("RAND: ", rand);
+        return rand;  // The value that rand is pointing to is sent back to the caller.
+    }
+
+    // function anotherFunction() {
+    //     console.log("This function just prints this message.");
+    //     // return  // If you don't include this, it's implied to exist.
+    // }
+
+    // function thisFunctionDoesNotLikeFours() {
+    // }
+
+    // Call the function.
+    // generateRandomUpTo100();
+
+    // console.log("RAND: ", rand);
+
+    let newRand = generateRandomUpTo100();
+    console.log(newRand + " apples.");
+    console.log(newRand + " apples.");
+    console.log(newRand + " apples.");
+
+    newRand = generateRandomUpTo100();
+    console.log(newRand + " oranges.");
+    console.log(newRand + " oranges.");
+
+    newRand = generateRandomUpTo100();
+    console.log(newRand + " pears.");
+    console.log(newRand + " pears.");
+
+    console.log(generateRandomUpTo100() + " lemons.");
+    console.log(generateRandomUpTo100() + " lemons.");
+
+
+    let color = "blue";
+
+    function makeMoreRed() {
+        // let color = "yellow";
+        let newColor = color + "red";
+
+        function addGreen() {
+            // let color = "purple";
+            let innerColor = color + "green";
+            return innerColor;
+        }
+
+        newColor = addGreen();
+
+        return newColor;
+        // return color + "red";
+    }
+
+    let newColor = makeMoreRed();
+    console.log("NEW COLOR:", newColor);
+
+
+    function add10To(newNum) {
+        return (newNum + 10);
+
+        // let finalNum = newNum + 10;
+        // return finalNum;
+    }
+
+    let nextNum = add10To(20);
+    // console.log("NEXT:", newNum);
+    console.log("NEXT:", nextNum);
+
+    let againNum = add10To(42);
+    console.log("NEXT:", againNum);
+
+
+    function multiplyNums(first, second, third) {
+        let product = first * second * third;
+        return product;
+    }
+
+    let m1 = multiplyNums(4, 2, 1);
+
+</script>
