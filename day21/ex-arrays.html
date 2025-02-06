@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrays</title>
+</head>
+
+<body>
+    <script src="letters.js"></script>
+    <script src="people.js"></script>
+    <script type="text/javascript">
+        // 1a. Create an array and put these colors in it:
+        // fuchsia, lime, grey, magenta, teal
+        let allColors = ["fuchsia", "lime", "grey", "magenta", "teal"];
+        console.log("1a:", allColors);
+
+        // b. Use array functions to remove the 3 last colors and add 2 new colors at the beginning of the array
+        // Removing the last 3. 
+        // allColors.pop();
+        // allColors.pop();
+        // allColors.pop();
+
+        allColors.splice(2)
+        // console.log("1b:", allColors);
+
+        // Same as above, but with slice to make a new copy with just the first 2 items.
+        // let newColors = allColors.slice(0, 2);
+        // console.log("1b:", newColors);
+
+        // Then add 2 at the beginning
+        // allColors.unshift("cornflowerblue");
+        // allColors.unshift("firebrick");
+
+        // allColors.splice(0, 0, "cornflowerblue", "firebrick");
+        // console.log("1b:", allColors);
+
+        allColors = ["cornflowerblue", "firebrick"].concat(allColors);
+        console.log("1b:", allColors);
+
+        // c. Reverse this array
+        // allColors.reverse();
+
+        // let newColors = [];
+        // for (let i = allColors.length - 1; i >= 0 ; i--) {
+        //     newColors.push(allColors[i]);
+        // }
+
+        // Without creating another array.
+        console.log("1c: before:", allColors);
+        for (let i = 0; i < (allColors.length / 2); i++) {
+            let temp = allColors[i];
+            allColors[i] = allColors[(allColors.length - 1) - i];
+            allColors[(allColors.length - 1) - i] = temp;
+        }
+        console.log("1c: after:", allColors);
+
+
+        // 2a. Find all vowels in the lotsOfLetters array provided in the letter.js file and extract them into another array.
+        let newLetters = [];
+        let allVowels = ["a", "e", "i", "o", "u"];
+        for (let i = 0; i < lotsOfLetters.length; i++) {
+            let thisLetter = lotsOfLetters[i];
+
+            // if (
+            //     thisLetter === "a"
+            //     || thisLetter === "e"
+            //     || thisLetter === "i"
+            //     || thisLetter === "o"
+            //     || thisLetter === "u"
+            // )
+            //     newLetters.push(thisLetter);
+
+            if (allVowels.indexOf(thisLetter) !== -1)  // !== -1 means it is found in the array of vowels
+                newLetters.push(thisLetter);
+
+            // if (allVowels.includes(thisLetter))  // Same as above, but easier to read.
+            //     newLetters.push(thisLetter);
+        }
+        console.log("2a:", newLetters);
+
+        // b. Remove every "z" in the lotsOfLetters array
+        // let noZ = []
+        // for (let i = 0; i < lotsOfLetters.length; i++) {
+        //     let thisLetter = lotsOfLetters[i];
+        //     if (thisLetter !== 'z') noZ.push(thisLetter);
+        // }
+        console.log("2b: before:", lotsOfLetters);
+        // for (let i = 0; i < lotsOfLetters.length; i++) {
+        //     let thisLetter = lotsOfLetters[i];
+        //     if (thisLetter === "z") {
+        //         lotsOfLetters.splice(i, 1);
+        //         i -= 1;  // Nullify the advancement in for loops i++
+        //     }
+        // }
+
+        for (let i = lotsOfLetters.length - 1; i >= 0; i--) {
+            let thisLetter = lotsOfLetters[i];
+            if (thisLetter === "z") {
+                lotsOfLetters.splice(i, 1);
+            }
+        }
+
+        // Alternative: find first z and remove. Do this at least as many times as there are items,
+        // so that if every item is a z, it can find every one.
+        // for (let i = 0; i < lotsOfLetters.length; i++) {  // Makes sure we run at least once for every letter.
+        //     for (let k = 0; k < lotsOfLetters.length; k++) {  // Gets rid of the first 'z' it finds.
+        //         if (lotsOfLetters[k] === "z") {
+        //             lotsOfLetters.splice(k, 1);
+        //             break;
+        //         }
+        //     }
+        // }
+
+
+        console.log("2b: after:", lotsOfLetters);
+
+
+        // 3. Display all the data in the given array in the following format:
+        // "Chris" 19
+        // "Georges" 33
+        // ...
+        const kids = [
+            ["Chris", 19],
+            ["Georges", 33],
+            ["Dustin", 29],
+            ["Wendy", 35],
+        ];
+
+        for (let i = 0; i < kids.length; i++) {
+            // console.log("\"" + kids[i][0] + "\" " + kids[i][1]);
+            // console.log(`"${kids[i][0]}" ${kids[i][1]}`);
+
+            let thisKid = kids[i];
+            // console.log("\"" + thisKid[0] + "\" " + thisKid[1]);
+
+            let thisKidName = thisKid[0];
+            let thisKidAge = thisKid[1];
+            console.log(`"${thisKidName}" ${thisKidAge}`);
+        }
+
+
+        // BONUS:
+        // 4. In the lotsOfPeople array provided in the people.js file:
+        // - Count how many people have a name starting with the letter "E"
+        // - Count how many people are over 50 years old
+        // - Remove the people under 21 from the array
+
+        let numStartingWithE = 0;
+        let numOver50 = 0;
+
+        for (let i = 0; i < lotsOfPeople.length; i++) {
+            let thisPerson = lotsOfPeople[i];
+
+            // if (thisPerson[0][0] === "E") numStartingWithE += 1;
+            // Same as above, but maybe easier to read? Or the same, depending on you.
+            let thisPersonName = thisPerson[0];
+            if (thisPersonName[0] === "E") numStartingWithE += 1;
+
+            if (thisPerson[1] > 50) numOver50 += 1;
+            else if (thisPerson[1] < 21) {
+                lotsOfPeople.splice(i, 1);
+                i -= 1;
+            }
+        }
+
+        console.log(`4: numStartingWithE: ${numStartingWithE}\tnumOver50: ${numOver50}`);
+        console.log("LEFTOVER PEOPLE:", lotsOfPeople);
+    </script>
+</body>
+
+</html>

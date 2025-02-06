@@ -1,0 +1,157 @@
+<script>
+    // let fruit1 = "apple";
+    // let fruit2 = "pear";
+    // let fruit3 = "lemon";
+    // let fruit4 = "orange";
+    // let fruit5 = "kiwi";
+    // let fruit6 = "tomato";
+    // let fruit7 = "watermelon";
+    // let fruit8 = "pepper";
+    // let fruit9 = "melon";
+    // let fruit10 = "banana";
+
+    // Above is cumbersome. We can store all of them (all related) into an Array, instead.
+    // Start blank and add as we go.
+    // let allFruit = [];
+    // allFruit.push("apple");
+    // allFruit.push("pear");
+    // allFruit.push("lemon");
+    // allFruit.push("orange");
+    // ...
+
+    // Or start with some, and add more later.
+    // let allFruit = ["apple", "pear"];
+    // allFruit.push("lemon");
+    // ...
+
+    // Create all at once, if we know from the start what needs to be in it.
+    let allFruit = ["apple", "pear", "lemon", "orange", "kiwi", "tomato", "watermelon", "pepper", "melon", "banana"];
+
+    console.log("First fruit:", allFruit[0]);
+    console.log("Second fruit:", allFruit[1]);
+    console.log("Third fruit:", allFruit[2]);
+    console.log("Eighth fruit:", allFruit[7]);
+
+
+    function eatFruit(inFruit) {
+        console.log("I like to eat " + inFruit + "s.");
+    }
+    // eatFruit(fruit1);
+    // eatFruit(fruit2);
+    // eatFruit(fruit3);
+    // eatFruit(fruit4);
+    // eatFruit(fruit5);
+    // eatFruit(fruit6);
+    // eatFruit(fruit7);
+    // eatFruit(fruit8);
+    // eatFruit(fruit9);
+    // eatFruit(fruit10);
+
+    eatFruit(allFruit[0]);
+    eatFruit(allFruit[1]);
+    eatFruit(allFruit[2]);
+    eatFruit(allFruit[3]);
+
+    allFruit.push("starfruit");
+    allFruit.push("eggplant");
+
+    // for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < allFruit.length; i++) {
+        // console.log("I:", i);
+        eatFruit(allFruit[i]);
+    }
+
+    // We can use Array.indexOf(value) to get position/address of the value in the Array.
+    console.log("Peppers at index: ", allFruit.indexOf("pepper"));  // Should return 7
+
+    // If the value is not found, Array.indexOf(value) will return a -1.
+    console.log("Mango at index: ", allFruit.indexOf("mango"));  // Should return -1
+    eatFruit(allFruit[0]);
+    eatFruit(allFruit.at(0));
+    eatFruit(allFruit[allFruit.length - 1]);
+    eatFruit(allFruit.at(-1));
+    eatFruit(allFruit[allFruit.length - 3]);
+    eatFruit(allFruit.at(-3));
+    eatFruit(allFruit[99]);
+    eatFruit(allFruit.at(99));
+
+    console.log("Before Pop:", allFruit);
+    let lastOne = allFruit.pop();
+    console.log("Popped:", lastOne, "allFruit:", allFruit);
+
+    allFruit.pop();
+    console.log("allFruit:", allFruit);
+
+    // Shift/unshift are like pop/push, but from the beginning of the array.
+    let firstOne = allFruit.shift();
+    console.log("Shifted:", firstOne, "allFruit:", allFruit);
+
+    allFruit.unshift("cherry");
+    console.log("allFruit:", allFruit);
+
+
+    // Slice to make copies from portions of arrays.
+    let fruitCopy = allFruit.slice();
+    console.log("fruitCopy:", fruitCopy);
+
+    let fruitLast5 = allFruit.slice(-5);
+    console.log("fruitLast5:", fruitLast5);
+
+    let fruitFirst5 = allFruit.slice(0, 5);
+    console.log("fruitFirst5:", fruitFirst5);
+
+
+    // Splice to remove.
+    let splicedItem = allFruit.splice(2, 1);
+    console.log("Spliced:", splicedItem, "allFruit:", allFruit);
+
+    // Splice to replace.
+    allFruit.splice(4, 1, "mango");
+    console.log("allFruit:", allFruit);
+
+    // Splice to only add.
+    allFruit.splice(2, 0, "grapefruit");
+    console.log("allFruit:", allFruit);
+
+
+    let arrayOne = [4, 5, 3];
+    let arrayTwo = [9, 2, 1];
+    let arrayCombined = arrayOne.concat(arrayTwo);
+    console.log("COMBINED:", arrayCombined);
+
+
+    // Strings can be treated as arrays!
+    let message = "Hello! I'm Beatrice";
+    console.log("Second letter:", message[1]);
+    console.log("Message length:", message.length);
+
+    let messageArr = message.split("");
+    console.log("MESSAGE ARR:", messageArr);
+
+    let messageArr2 = message.split("!");
+    console.log("MESSAGE SPLIT BY !:", messageArr2);
+
+    let messageArr3 = message.split("e");
+    console.log("MESSAGE SPLIT BY e:", messageArr3);
+    messageArr3.push("WUT");
+    console.log("MESSAGE AS ARRAY", messageArr3);
+
+    // Create a new string from all the items in an Array with Array.join(separator)
+    console.log(allFruit.join(","));
+    console.log(allFruit.join(""));
+    console.log(allFruit.join(" - "));
+
+
+    // Multidimensional arrays, or arrays in arrays.
+    arrayOne = [4, 5, 3];
+    arrayTwo = [9, 2, 1];
+
+    let arrayOuter = [
+        [4, 5, 3],
+        [9, 2, 1]
+    ];
+    // let arrayOuter = [arrayOne, arrayTwo];
+
+    console.log(arrayOuter[0][1]);  // 5 -- same as (arrayOuter[0])[1]
+    console.log(arrayOuter[1][2]);  // 1
+</script>

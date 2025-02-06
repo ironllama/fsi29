@@ -10,11 +10,42 @@
 
 <body>
     <script type="text/javascript">
-    // 1. Create a function that says hello to the person name provided as an argument.
+        // 1. Create a function that says hello to the person name provided as an argument.
+        function hello(person) {
+            console.log("Hello, " + person + "!");
+        }
+        hello("Beatrice");
 
-    // 2. Create a function that will tell you if a provided year is a leap year or not.
-    // A year is a leap year if it is divisible by 4 but not 100, or else is divisible by 400.
+        // 2. Create a function that will tell you if a provided year is a leap year or not.
+        // A year is a leap year if it is divisible by 4 but not 100, or else is divisible by 400.
+        function isLeapYear(year) {
+            // let isLeap = false;
 
+            // // if (year % 400 === 0) isLeap = true;
+            // // if (!isLeap && (year % 4 === 0 && year % 100 !== 0)) isLeap = true;
+
+            // // One of may other alternates.
+            // if (year % 4 === 0) {
+            //     if (year % 100 !== 0 || year % 400 == 0) {
+            //         isLeap = true;
+            //     }
+            // }
+
+            // if (isLeap) console.log("That is a leap year!");
+            // else console.log("Non-leap year.")
+
+            if (year % 4 === 0) {
+                if (year % 100 !== 0 || year % 400 == 0) {
+                    console.log("That's a leap year!");
+                }
+                else console.log("That's NOT a leap year!");
+            }
+            else console.log("That's NOT a leap year!");
+        }
+        isLeapYear(3);  // Expect not leap
+        isLeapYear(1900);  // Expect not leap year
+        isLeapYear(2000);  // Expect leap
+        isLeapYear(2004);  // Expect leap
     </script>
 </body>
 
