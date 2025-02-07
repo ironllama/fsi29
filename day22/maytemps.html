@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays2</title>
+</head>
+
+<body>
+    <script>
+        // Here are the temperatures for each day in May, in degrees Fahrenheit.
+        const mayTemps = [
+            [86, 78, 85, 79, 86, 78, 80],
+            [84, 82, 74, 85, 83, 82, 79],
+            [76, 79, 80, 81, 82, 81, 78],
+            [77, 79, 83, 84, 85, 80, 78],
+            [83, 81, 78]
+        ];
+
+        // 1. Create a function that returns the temperature for a given day (1-31)
+        function getTempForDay(date) {
+            let finalTemp = 0;
+
+            // Your code here!
+
+            return finalTemp;
+        }
+
+        console.log("1. Get temp for day");
+        console.log("86", getTempForDay(1));
+        console.log("79", getTempForDay(4));
+        console.log("80", getTempForDay(7));
+        console.log("74", getTempForDay(10));
+        console.log("80", getTempForDay(17));
+        console.log("84", getTempForDay(25));
+        console.log("78", getTempForDay(31));
+        console.log("0", getTempForDay(32));
+
+
+        // 2. Create a function that returns an array that contains the lowest temp, highest temp, and average temp for the month. (eg. [54, 66, 58])
+        function getLowHighAvg(monthTemps) {
+            // Your code here!
+        }
+
+        console.log("2. Get low, high, avg for month");
+        console.log("[74, 86, 81]:", getLowHighAvg(mayTemps));
+
+
+        // 3. Create a function that returns the average temperature for a given week (1-5).
+
+        // Create your function here!
+
+        console.log("3. Get average for a specific week");
+        console.log("82", avgForWeek(1));
+        console.log("81", avgForWeek(2));
+        console.log("80", avgForWeek(3));
+        console.log("81", avgForWeek(4));
+        console.log("81", avgForWeek(5));
+        console.log("0", avgForWeek(6));
+
+        // 4. Create a function that returns the average temperature for a given day of the week ("Su", "M", "T", "W", "Th", "F", "S").
+
+        // Create your function here!
+
+        console.log("4. Get average for particular all days of week");
+        console.log("81", avgForDayOfWeek("Su"));
+        console.log("80", avgForDayOfWeek("M"));
+        console.log("80", avgForDayOfWeek("T"));
+        console.log("82", avgForDayOfWeek('W'));
+        console.log("84", avgForDayOfWeek('Th'));
+        console.log("80", avgForDayOfWeek('F'));
+        console.log("79", avgForDayOfWeek('S'));
+        console.log("0", avgForDayOfWeek('X'));
+        console.log("0", avgForDayOfWeek(123));
+
+
+        // 5. Create a function that returns a new data set with the temperatures converted to Celsius.
+
+        // Your function here!
+
+        console.log("5. Celcius temps");
+        console.log(`[['30.0', '25.6', '29.4', '26.1', '30.0', '25.6', '26.7']
+['28.9', '27.8', '23.3', '29.4', '28.3', '27.8', '26.1']
+['24.4', '26.1', '26.7', '27.2', '27.8', '27.2', '25.6']
+['25.0', '26.1', '28.3', '28.9', '29.4', '26.7', '25.6']
+['28.3', '27.2', '25.6']]`);
+        console.log(celsiusTemps());
+    </script>
+</body>
+
+</html>

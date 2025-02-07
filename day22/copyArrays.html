@@ -1,0 +1,72 @@
+<script>
+    let fruits = ["apple", "banana", "cherry", "durian"]
+    console.log("FRUITS:", fruits);
+
+    // Are we copying?
+    let newFruits = fruits;
+    newFruits[2] = "coconut";
+
+    // Not a copy! Changing the same base array.
+    console.log("NEWFRUITS:", newFruits);
+    console.log("FRUITS:", fruits);
+
+    // Array.slice lets us get a proper copy of the array.
+    let slicedFruits = fruits.slice();
+    slicedFruits[2] = "cataloupe";
+
+    console.log("SLICEDFRUITS:", slicedFruits);
+    console.log("FRUITS:", fruits);
+
+    // However this is a "shallow copy".
+    // If the array contains other data structures, like another array
+    // then things still don't get fully copied.
+    let nums = [
+        [1, 2, 3],
+        [4, 5, 6]
+    ];
+    console.log("NUMS:", nums);
+
+    let slicedNums = nums.slice();
+    slicedNums[0][2] = 7;
+
+    // Outer array is copied, but it still uses the same inner arrays.
+    console.log("SLICEDNUMS:", slicedNums);
+    console.log("NUMS:", nums);
+
+    // How do we fix this? How do we "deep copy"?
+    // Couple options:
+    // 1. We can manually create our own copy process.
+    let manualNums = [];
+    for (let i = 0; i < nums.length; i++) {
+        let innerNums = nums[i];
+
+        let newArr = [];
+        for (let k = 0; k < innerNums.length; k++) {
+            newArr.push(innerNums[k]);
+        }
+
+        manualNums.push(newArr);
+    }
+    manualNums[1][1] = 9;
+
+    console.log("MANUALNUMS:", manualNums);
+    console.log("NUMS:", nums);
+
+
+    // 2. Use a serializer/deserialized to inefficiently
+    // duplicate the array.
+    let serializedNums = JSON.parse(JSON.stringify(nums));
+    serializedNums[0][0] = 5;
+
+    console.log("SERIALIZEDNUMS:", serializedNums);
+    console.log("NUMS:", nums);
+
+
+    // 3. Use the new JS function structuredClone()
+    let sClone = structuredClone(nums);
+    sClone[1][0] = 8;
+
+    console.log("SCLONE:", sClone);
+    console.log("NUMS:", nums);
+
+</script>
