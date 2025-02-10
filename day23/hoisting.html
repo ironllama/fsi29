@@ -1,0 +1,15 @@
+<script>
+    // Function declarations are hoisted.
+    console.log(doOne());
+
+    function doOne() {
+        return "ONE!";
+    }
+
+
+    // Function expressions are not.
+    console.log(doTwo());
+
+    let doTwo = function () { return "TWO!"; }
+
+</script>

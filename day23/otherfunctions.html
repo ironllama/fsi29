@@ -1,0 +1,134 @@
+<script>
+    function add10(num) { return num + 10; }
+    console.log(add10(23));
+
+    let dude = "sweet";
+
+    // Named anonymous functions.
+    let oneAdd10 = function (num) { return num + 10; }
+    console.log(oneAdd10(22));
+
+    let nameAdd10 = function (num) { return num + 10; }
+    console.log(nameAdd10(34));
+
+
+    function makePlural(thing, customPlural) {
+        if (customPlural !== undefined && typeof customPlural === 'function') {
+            console.log("CUSTOM SENT!");
+            thing = customPlural();
+            // thing = "potatoe";
+        }
+
+        return thing + "s";
+    }
+
+    console.log(makePlural("apple"));
+    console.log("apples");
+
+    function morePotato() {
+        return "potatoe";
+    }
+    console.log(makePlural("potato", morePotato));
+    // console.log("potatoes");
+
+    console.log(makePlural("watercress", function () {
+        return "watercresse";
+    }));
+
+    function one() {
+        console.log("ONE!");
+    }
+    one();
+
+    // IIFE: Immediately Invoked Function Expression
+    (function () {
+        console.log("NO NAME!");
+    })();
+
+    // Arrow function.
+    let uno = function (name) { console.log("Hola, " + name); }
+    let dos = (name) => {
+        console.log("Yay, " + name);
+    }
+
+    let add20 = function (num) { return num + 20; }
+    // (function () { return 20; })()  // IIFE version.
+
+    let arradd20 = (num) => { return num + 20; }
+    let arrDosadd20 = num => num + 20;
+
+    console.log(makePlural("mango", () => "mangoe"));
+    console.log(makePlural("mango", _ => "mangoe"));
+
+
+    // Array functions!
+    let fruit = ["apple", "banana", "cherry", "durian"];
+
+    // Standard for loop.
+    for (let i = 0; i < fruit.length; i++) {
+        console.log("STANDARD FOR:", fruit[i]);
+    }
+
+    // Array forEach!
+    function fruitHandler(fruit) {
+        console.log("FOREACH:", fruit);
+    }
+    fruit.forEach(fruitHandler);
+
+    fruit.forEach(function (fruit) {
+        console.log("FOREACHANON:", fruit);
+    });
+
+    fruit.forEach(fruit => console.log("FOREACHARR:", fruit))
+
+    fruit.forEach(function (fruit, idx) {
+        console.log("FOREACHANON:", fruit, idx);
+    });
+    fruit.forEach((fruit, idx) => console.log("FOREACHARR:", fruit, idx))
+
+    fruit.forEach(fruit => {
+        if (fruit === "cherry") {
+            console.log("FOUND IT!");
+            // break;  // No workie. Foreach does not stop.
+        }
+    });
+
+
+    // Map
+    let lotsNums = [4, 6, 3, 2, 3, 1, 67, 3, 4];
+
+    let added10 = [];
+    for (let i = 0; i < lotsNums.length; i++) {
+        added10.push(lotsNums[i] + 10);
+    }
+
+    let mapAdded10 = lotsNums.map(n => n + 10);
+
+
+    let gtFive = lotsNums.filter(n => n > 5);
+    console.log("GTFIVE:", gtFive);
+
+    // NOTE: more useful for objects. Rather trivial for primitives...
+    let found = lotsNums.find(n => n === 4);
+    console.log("FOUND:", found);
+
+    console.log("INDEXOF:", lotsNums.indexOf(4));
+
+
+    let stuff = ["one", "two", "three", "four"];
+    stuff.sort();
+    console.log("STUFF SORTED:", stuff);
+
+    lotsNums = [2, 27, 12, 9, 1, 17, 345, 4];
+    console.log("NUMS BEFORE SORTED:", lotsNums);
+    // lotsNums.sort();
+    // lotsNums.sort((a, b) => {
+    //     if (a < b) return -1;
+    //     else if (a > b) return 1;
+    //     else return 0;
+    // });
+    lotsNums.sort((a, b) => a - b);
+    console.log("NUMS AFTER SORTED:", lotsNums);
+
+
+</script>

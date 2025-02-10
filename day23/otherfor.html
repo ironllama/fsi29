@@ -1,0 +1,56 @@
+<script>
+    let fruit = ["apple", "banana", "cherry", "durian"];
+
+    for (let i = 0; i < fruit.length; i++) {
+        console.log("STANDARD FOR:", fruit[i]);
+    }
+
+
+    // For in loop returns each key, one at a time.
+    for (let oneFruit in fruit) {
+        console.log("FOR IN:", oneFruit, fruit[oneFruit]);
+    }
+
+    for (let oneFruit of fruit) {
+        console.log("FOR OF:", oneFruit);
+    }
+
+    let oddFruit = fruit.slice();
+    oddFruit.dude = "sweet";
+    // console.log("ODD:", oddFruit);
+    for (let oneFruit in oddFruit) {
+        console.log("FOR IN:", oneFruit, oddFruit[oneFruit]);
+    }
+
+    for (let oneFruit of oddFruit) {
+        console.log("FOR OF:", oneFruit);
+    }
+
+    // Can use loop control break/continue just like regular for loop.
+    for (let oneFruit of oddFruit) {
+        console.log("FOR OF:", oneFruit);
+        if (oneFruit === "cherry") {
+            console.log("FOUND IT!");
+            break;
+        }
+    }
+
+    for (let keyVal of Object.entries(oddFruit)) {
+        console.log("FOR OF:", keyVal);
+        if (keyVal[1] === "cherry") {
+            console.log("FOUND IT!");
+            break;
+        }
+    }
+
+    for (let [key, val] of Object.entries(oddFruit)) {
+        console.log("FOR OF:", key, val);
+        if (val === "cherry") {
+            console.log("FOUND IT!");
+            break;
+        }
+    }
+
+    console.log("ENTRIES:", Object.entries(oddFruit))
+
+</script>

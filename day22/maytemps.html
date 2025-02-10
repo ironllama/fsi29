@@ -22,7 +22,30 @@
         function getTempForDay(date) {
             let finalTemp = 0;
 
-            // Your code here!
+            // let currDay = 1;
+            // weekLoop: for (let week = 0; week < mayTemps.length; week++) {
+            //     let thisWeek = mayTemps[week];
+
+            //     for (let day = 0; day < thisWeek.length; day++) {
+            //         if (currDay === date) {
+            //             finalTemp = thisWeek[day];
+            //             break weekLoop;
+            //         }
+
+            //         currDay += 1;
+            //     }
+            // }
+
+            weekLoop: for (let week = 0; week < mayTemps.length; week++) {
+                let thisWeek = mayTemps[week];
+
+                for (let day = 0; day < thisWeek.length; day++) {
+                    if ((week * 7) + (day + 1) === date) {
+                        finalTemp = thisWeek[day];
+                        break weekLoop;
+                    }
+                }
+            }
 
             return finalTemp;
         }
@@ -40,7 +63,36 @@
 
         // 2. Create a function that returns an array that contains the lowest temp, highest temp, and average temp for the month. (eg. [54, 66, 58])
         function getLowHighAvg(monthTemps) {
-            // Your code here!
+            // Many ways to initialize our values.
+            // let lowest = Infinity;  // Infinity!
+            // let lowest = -1;  // Arbitrary negative -- unless May has a cold spell...
+            // let lowest = mayTemps[0][0];  // Or just use the first value in the set.
+            let lowest = 999;  // Or value that you know will be above the valid values in the set.
+            let highest = 0;
+            let totalTemps = 0;
+            let numDays = 0;
+
+            for (let week = 0; week < mayTemps.length; week++) {
+                let thisWeek = mayTemps[week];
+                numDays += thisWeek.length;
+
+                for (let day = 0; day < thisWeek.length; day++) {
+                    // numDays += 1;
+                    let thisDayTemp = thisWeek[day];
+
+                    if (thisDayTemp < lowest)
+                        lowest = thisDayTemp;
+
+                    if (thisDayTemp > highest)
+                        highest = thisDayTemp;
+
+                    totalTemps += thisDayTemp;
+                }
+            }
+
+            let avgTemp = Math.round(totalTemps / numDays);
+
+            return [lowest, highest, avgTemp];
         }
 
         console.log("2. Get low, high, avg for month");
@@ -49,7 +101,24 @@
 
         // 3. Create a function that returns the average temperature for a given week (1-5).
 
-        // Create your function here!
+        function avgForWeek(weekNum) {
+            let avgTemp = 0;
+
+            if (weekNum > mayTemps.length) return avgTemp;
+
+            let totalTemps = 0;
+            let thisWeek = mayTemps[weekNum - 1];
+            let numDays = thisWeek.length;
+
+            for (let day = 0; day < thisWeek.length; day++) {
+                let thisDayTemp = thisWeek[day];
+                totalTemps += thisDayTemp;
+            }
+
+            avgTemp = Math.round(totalTemps / numDays);
+
+            return avgTemp;
+        }
 
         console.log("3. Get average for a specific week");
         console.log("82", avgForWeek(1));
@@ -61,7 +130,30 @@
 
         // 4. Create a function that returns the average temperature for a given day of the week ("Su", "M", "T", "W", "Th", "F", "S").
 
-        // Create your function here!
+        function avgForDayOfWeek(inDayName) {
+            let avgTemp = 0;
+
+            // Reference to convert incoming day name to a valid index number.
+            let daysOfWeek = ["Su", "M", "T", "W", "Th", "F", "S"];
+            let dayNum = daysOfWeek.indexOf(inDayName);
+
+            if (dayNum === -1) return avgTemp;
+
+            let totalTemps = 0;
+            let numDays = 0;
+
+            for (let week = 0; week < mayTemps.length; week++) {
+                let thisWeek = mayTemps[week];
+                if (dayNum < thisWeek.length) {
+                    totalTemps += thisWeek[dayNum];
+                    numDays += 1;
+                }
+            }
+
+            avgTemp = Math.round(totalTemps / numDays);
+
+            return avgTemp;
+        }
 
         console.log("4. Get average for particular all days of week");
         console.log("81", avgForDayOfWeek("Su"));
@@ -77,7 +169,27 @@
 
         // 5. Create a function that returns a new data set with the temperatures converted to Celsius.
 
-        // Your function here!
+        function celsiusTemps() {
+            let celsiusTemps = [];
+
+            for (let week = 0; week < mayTemps.length; week++) {
+                let thisWeek = mayTemps[week];
+
+                let newWeek = [];
+
+                for (let day = 0; day < thisWeek.length; day++) {
+                    let thisDay = thisWeek[day];
+                    let thisDayInC = (thisDay - 32) * (5 / 9);
+
+                    // newWeek.push(thisDayInC.toFixed(1));
+                    newWeek.push(Math.round(thisDayInC * 10) / 10);
+                }
+
+                celsiusTemps.push(newWeek);
+            }
+
+            return celsiusTemps;
+        }
 
         console.log("5. Celcius temps");
         console.log(`[['30.0', '25.6', '29.4', '26.1', '30.0', '25.6', '26.7']
