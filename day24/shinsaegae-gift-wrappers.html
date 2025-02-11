@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shinsaegae</title>
+</head>
+
+<body>
+    <script src="shinsaegae-gift-wrappers.js"></script>
+    <script>
+        // console.log("DATA:", dataStr.trim().split("\n"))
+        // Splitting huge string into individual lines, one line per box.
+        const allBoxes = dataStr.trim().split("\n");
+
+        let totalSqFt = 0;
+        allBoxes.forEach(box => {
+            // console.log("DIMS:", box.split("x"))
+            // Splitting each box string into 3 sides
+            const dimStr = box.split("x");
+            const [w, h, l] = dimStr.map(str => parseInt(str));  // Make sides numbers.
+
+            const minCoverage = (2 * l * w) + (2 * w * h) + (2 * h * l)  // Do math.
+
+            // let smallest = l*w;
+            // if (w*h < smallest) smallest = w*h;
+            // else if (h*l < smallest) smallest = h*l;
+            const smallest = Math.min((l * w), (w * h), (h * l));  // Same as above.
+
+            const total = minCoverage + smallest;
+
+            totalSqFt += total;
+        });
+
+        console.log("TOTAL SQFT:", totalSqFt);
+    </script>
+</body>
+
+</html>

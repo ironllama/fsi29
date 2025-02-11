@@ -1,0 +1,58 @@
+<script>
+    let allNums = [5, 6, 3, 78, 23, 78, 4, 2, 5, 0, 7, 4,];
+
+    console.log("BEFORE MAP:", allNums);
+
+    // let multipliedBy4 = allNums.map(n => n * 4);
+
+    // let handleMap = function (n) {
+    //     return n * 4;
+    // }
+    // let multipliedBy4 = allNums.map(handleMap);
+
+    // Same as above, but replacing handleMap in map.
+    let multipliedBy4 = allNums.map(function (n) {
+        return n * 4;
+    });
+
+    // Functionally idential to the map above
+    // but using a standard for loop.
+    // let multipliedBy4 = [];
+    // for (let i = 0; i < allNums.length; i++) {
+    //     let newNum = allNums[i] * 4;
+    //     multipliedBy4.push(newNum);
+    // }
+
+    console.log("AFTER MAP: allNums:", allNums, "multipliedBy4:", multipliedBy4);
+
+
+    let totalAmtStandard = 0;
+    for (let i = 0; i < allNums.length; i++) {
+        let nextNum = allNums[i];
+        totalAmtStandard += nextNum;
+    }
+    let avgStandard = totalAmtStandard / allNums.length;
+    console.log("AVGSTANDARD:", avgStandard.toFixed(2));
+
+    // Same as above, but using Array.reduce
+    let totalAmtReduce = allNums.reduce(function (totalAmt, nextNum) {
+        return totalAmt += nextNum;  // Returning for next iteration's totalAmtStandard.
+    }, 0);
+
+    // let totalAmtReduce = allNums((totalAmt, nextNum) => totalAmt += nextNum, 0);  // As an arrow function.
+    let avgReduce = totalAmtReduce / allNums.length;
+    console.log("AVGREDUCE:", avgReduce.toFixed(2));
+
+
+    let allEvens = allNums.reduce(function (allEvens, nextElem) {
+        if (nextElem % 2 === 0) allEvens.push(nextElem);
+        return allEvens;
+    }, []);
+    console.log("ALLEVENS:", allEvens);
+
+    // The above use of Array.reduce, in particular, could have also been done with Array.filter:
+    let allEvensFilter = allNums.filter(function (nextNum) {
+        return nextNum % 2 === 0;
+    });
+    console.log("ALLEVENSFILTER:", allEvensFilter);
+</script>
