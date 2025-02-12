@@ -1,0 +1,85 @@
+<script>
+    let seat = {
+        model: "Sedan 422",
+        color: "white",
+        option: "sport",
+        sound: "beep",
+        soundHorn: function () { console.log(this.sound); }
+    }
+
+    console.log("SEAT:", seat);
+    // Call the soundHorn function in the object.
+    seat.soundHorn();
+
+    let vw = {
+        model: "Golf",
+        color: "black",
+        option: "winter",
+        sound: "honk",
+        soundHorn: function () { console.log(this.sound); }
+    }
+    vw.soundHorn();
+
+    function soundHorn(car) {
+        console.log(`A ${car.model} goes ${car.sound}!`);
+    }
+    soundHorn(seat);
+    soundHorn(vw);
+
+    // Create an blank object and then populate with values.
+    let hynundai = {};
+    hynundai.model = "Sonata";
+    hynundai.color = "silver";
+    hynundai.option = "navi";
+    hynundai.sound = "eeeeep";
+    hynundai.soundHorn = function () { console.log(`A ${hynundai.model} goes ${hynundai.sound}!`); }
+
+    hynundai.soundHorn();
+
+    // Constructor function.
+    function Bimmer() {
+        this.model = "BMW";
+        this.color = "grey";
+        this.option = "touring";
+        this.sound = "GET OUT OF MY WAY";
+        this.soundHorn = function () { console.log(`A ${this.model} goes ${this.sound}!`); }
+    }
+    let bimmer = new Bimmer();
+    bimmer.soundHorn();
+
+    function Car(inModel, inColor, inOption, inSound) {
+        this.model = inModel;
+        this.color = inColor;
+        this.option = inOption;
+        this.sound = inSound;
+        this.soundHorn = function () { console.log(`A ${this.model} goes ${this.sound}!`); }
+    }
+
+    let citroen = new Car("ami", "orange", "power windows", "ooh-lala");
+    citroen.soundHorn();
+
+    // Update the prototype (blueprint used to construct objects)
+    // Prototype properties are shared across objects.
+    Car.prototype.wheels = 4;
+
+    let fiat = new Car("500L", "green", "bouncy wheels", "excusi");
+    fiat.soundHorn();
+    console.log("fiat after adding wheels:", fiat, "wheels:", fiat.wheels);
+
+    let benz = new Car("C300", "purple", "tinted windows", "gutentag");
+    benz.soundHorn();
+    console.log("benz after adding wheels:", benz, "wheels:", benz.wheels);
+
+    console.log("Losing a wheel...")
+    // benz.wheels = 3;
+    // console.log("benz:", benz);
+    Car.prototype.wheels = 3
+    console.log("benz after losing a wheel:", benz.wheels);
+    console.log("fiat after losing a wheel:", fiat.wheels);
+
+    Car.prototype.report = function () { console.log(`${this.sound}! I am a ${this.color} ${this.model} with the ${this.option} option.`); }
+    citroen.report();
+    fiat.report();
+    benz.report();
+
+</script>

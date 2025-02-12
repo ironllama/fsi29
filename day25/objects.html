@@ -1,0 +1,114 @@
+<script>
+    let fruitArr = ["apple", "banana", "cherry", "durian"];
+    let whatami = [34, 22, 12, 77, 24];
+
+    let colorArr = ["red", "yellow", "red", "green"];
+    let priceArr = [1000, 100, 250, 12000];
+
+    let fruitMulti = [
+        ["apple", "red", 1000, 35],
+        ["banana", "yellow", 100, 123],
+        ["cherry", "red", 250, 95],
+        ["durian", "green", 12000, 2],
+    ];
+
+    let gerryArr = ["Gerry", 32, 179];
+    let gerryObj = {
+        name: "Gerry",
+        age: 32,
+        height: 179
+    }
+
+    console.log("NAME:", gerryObj.name);
+
+    let appleOne = {
+        name: "apple",
+        color: "red",
+        price: 1000,
+        qtyInStock: 35,
+    }
+
+    let allFruit = [  // Same as fruitMulti above, but with metadata! An array of objects.
+        appleOne,
+        {
+            name: "banana",
+            color: "yellow",
+            price: 100,
+            qtyInStock: 123,
+        },
+        {
+            name: "cherry",
+            color: "red",
+            price: 250,
+            qtyInStock: 95,
+            origin: "MI",
+        },
+        {
+            name: "durian",
+            color: "green",
+            price: 12000,
+            qtyInStock: 2,
+        },
+    ];
+
+    let counter = 0;
+    allFruit.forEach(function (fruit) {
+        // console.log("FRUIT:", fruit);
+        counter = counter + fruit.qtyInStock;
+    });
+    console.log("Quantity of all fruit:", counter);
+
+    let allFruitObj = {
+        apple: appleOne,
+        banana: {
+            name: "banana",
+            color: "yellow",
+            price: 100,
+            qtyInStock: 123,
+        },
+        cherry: {
+            name: "cherry",
+            color: "red",
+            price: 250,
+            qtyInStock: 95,
+            origin: "MI",
+        },
+        durian: {
+            "name": "durian",
+            "color": "green",
+            "price": 12000,
+            "qtyInStock": 2,
+            // country-of-origin: "Thailand",  // The hypens are treated as minuses!
+            "country-of-origin": "Thailand",
+        },
+    }
+    console.log("ALLFRUITOBJ:", allFruitObj);
+    console.log("CHERRY:", allFruitObj.cherry);
+    console.log("CHERRY:", allFruitObj["cherry"]);
+    console.log("CHERRY:", allFruit.find(f => f.name === "cherry"));
+
+    console.log("ALL THE KEYS:", Object.keys(allFruitObj));
+    let allFruitKeys = Object.keys(allFruitObj);
+    let totalQty = 0;
+    for (let fruitKey of allFruitKeys) {
+        totalQty += allFruitObj[fruitKey].qtyInStock;
+    }
+    console.log("TOTAL QTY:", totalQty);
+
+    console.log("ALL THE VALUES:", Object.values(allFruitObj));
+    console.log("ALL THE ENTRIES:", Object.entries(allFruitObj));
+
+    console.log("LOOKING FOR OBJECT w/ qtyInStock...");
+    for (let fruit of Object.values(allFruitObj)) {
+        // if (fruit.hasOwnProperty("origin")) {
+        //     console.log("FOUND:", fruit);
+        //     break;
+        // }
+        if (Object.hasOwn(fruit, "origin")) {
+            // console.log("FOUND:" + fruit);  // Prints out [object], instead of contents of object.
+            console.log("FOUND:", fruit);
+            break;
+        }
+    }
+
+</script>
