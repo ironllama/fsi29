@@ -401,6 +401,6 @@ const allVehicles = [
     },
 ];
 
-module.exports = {
-    allVehicles
-}
+// module.exports = {
+//     allVehicles
+// }

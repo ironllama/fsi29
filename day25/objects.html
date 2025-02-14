@@ -14,12 +14,16 @@
 
     let gerryArr = ["Gerry", 32, 179];
     let gerryObj = {
-        name: "Gerry",
         age: 32,
-        height: 179
+        height: 179,
+        name: "Gerry",
     }
 
+    console.log("NAME:", gerryArr[0]);
     console.log("NAME:", gerryObj.name);
+
+    console.log("HEIGHT:", gerryArr[2]);
+    console.log("HEIGHT:", gerryObj.height);
 
     let appleOne = {
         name: "apple",
@@ -27,6 +31,9 @@
         price: 1000,
         qtyInStock: 35,
     }
+
+    let one = "blue";
+    let colors = [one, "red", "yellow"]
 
     let allFruit = [  // Same as fruitMulti above, but with metadata! An array of objects.
         appleOne,
@@ -85,6 +92,10 @@
     console.log("ALLFRUITOBJ:", allFruitObj);
     console.log("CHERRY:", allFruitObj.cherry);
     console.log("CHERRY:", allFruitObj["cherry"]);
+    console.log("CHERRY:", allFruitObj.cherry["country-of-origin"]);
+    console.log("CHERRY:", allFruitObj["cherry"]["country-of-origin"]);
+
+    // If you use an array, you can not go directly to the object you need. You need to search for it.
     console.log("CHERRY:", allFruit.find(f => f.name === "cherry"));
 
     console.log("ALL THE KEYS:", Object.keys(allFruitObj));

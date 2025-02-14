@@ -14,17 +14,104 @@
         // 1. Use a constructor function to create an object user with a firstName, a lastName, and an age.
         // Then add 10 years to the age of the user after creating the user.
 
+        // let peter = {};
+        // peter.firstname = "Peter";
+        // peter.lastname = "Pan";
+        // peter.age = 14;
+
+        function Person(inFirstname, inLastname, inAge) {
+            this.firstname = inFirstname;
+            this.lastname = inLastname;
+            this.age = inAge;
+        }
+
+        let peter = new Person("Peter", "Pan", 14);
+        peter.age += 10;
+        console.log("Peter's age:", peter.age);
+
+
         // 2. Create two other user objects and group them together (your choice of data structure) with a "users" variable.
         // Then display in the console on a single line, all the users' fullnames.
 
+        let paul = new Person("Paul", "Shore", 34);
+        let mary = new Person("Mary", "Lamb", 62);
+
+        let users = [peter, paul, mary];  // Group them together.
+
+        let output = "";  // Single output for console.log, to keep it on a single line.
+        // for (let i = 0; i < users.length; i++) {
+        //     let user = users[i];
+        //     output += `${user.firstname} ${user.lastname}`;
+        //     if (i < users.length - 1) output += ", ";
+        // }
+        users.forEach(function (user, i) {
+            output += `${user.firstname} ${user.lastname}`;
+            if (i < users.length - 1) output += ", ";
+        })
+        console.log("PEOPLE:", output);
+
+
         // 3. Add a length method (object function) to all of your users that will return the length of their full name. Then display all the names and lengths to confirm your function works properly.
+
+        function newLengthToAddToObject() {
+            return this.firstname.length + this.lastname.length;
+        }
+
+        // Adding a function to every object inside the users array...
+        // users.forEach(user => user.length = newLengthToAddToObject)
+
+        // Add the function to the prototype, which gives all objects access to it.
+        Person.prototype.length = newLengthToAddToObject;
+
+        for (let i = 0; i < users.length; i++) {
+            let user = users[i];
+            console.log(user.firstname, user.length())
+        }
+        // users.forEach(function (user) {
+        //     console.log(user.firstname, user.length())
+        // })
+        // users.forEach(user => console.log(user.firstname, user.length()));
+
 
         // 4. Use the allVehicles array from the cars.js file and:
         // Create a function that returns the cars that were produced the last 5 years.
         // Then display manufacturer and model names of those newer cars.
+        function getNewCars() {
+            // return allVehicles.filter(car => car.productionYear >= 2020)
+            let newCars = [];
+
+            for (let i = 0; i < allVehicles.length; i++) {
+                let car = allVehicles[i];
+                if (car.productionYear >= 2020) {
+                    newCars.push(car);
+                }
+            }
+
+            return newCars;
+        }
+        // let getNewCars = () => allVehicles.filter(car => car.productionYear >= 2020)
+
+        let newCars = getNewCars();
+        for (let i = 0; i < newCars.length; i++) {
+            let car = newCars[i];
+            console.log(car.manufacturer, car.model, car.productionYear);
+        }
+        // newCars.forEach(car => console.log(car.manufacturer, car.model, car.productionYear));
+
 
         // 5. Sort all the vehicles by production year date.
+        newCars.sort(function (a, b) {
+            // return a.productionYear - b.productionYear;
+            let res = 0;
 
+            if (a.productionYear < b.productionYear) res = -1;
+            else if (a.productionYear > b.productionYear) res = 1;
+
+            return res;
+        })
+        // newCars.sort((a, b) => a.productionYear - b.productionYear);
+
+        console.log("SORTED:", newCars);
 
         // BONUS:
         // 6. Create a function that will convert an object into a array like this:

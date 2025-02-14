@@ -38,7 +38,10 @@
     console.log("FINAL:", allBeginsVowel);
 
     let final = lotsOfPeople
-        .filter(p => p[1] <= 21)
+        .filter(person => person[1] <= 21)
+        // .filter(function (person) {  // Same as above.
+        //     return person[1] <= 21;
+        // })
         .filter(person => {
             let personName = person[0];
             let firstLetter = personName[0].toLowerCase();
@@ -46,11 +49,11 @@
             return allVowels.includes(firstLetter);  // return true or false for the Array.filter()
         })
         .sort(function (a, b) { return a[1] - b[1]; })
-        .reduce((acc, p) => p[1] + acc, 0)
+        .reduce((acc, p) => p[1] + acc, 0);
     console.log("FINAL:", final);
 
     let randomNum = Math.random();
     let to2dec = randomNum.toFixed(2);
-    console.log("RNADOM to 2 dec points:", to2dec);
+    console.log("RANDOM to 2 dec points:", to2dec);
     console.log("RANDOM to 2 dec points:", Math.random().toFixed(2));
 </script>

@@ -1,0 +1,213 @@
+<script src="../day21/people.js"></script>
+<script>
+    let car = ["hyundai", "elantra", 2002, 23.1, 10, 3, 5];
+    let carMan = car[0];
+    let carModel = car[1];
+    let carYear = car[2];
+    let carMpg = car[3];
+    console.log("CAR:", carMan, carModel, carYear, carMpg);
+
+    // let [newMan, newModel, newYear, newMpg, newLength, newWidth, newPass] = ["hyundai", "elantra", 2002, 23.1, 10, 3, 5];
+    let newCar = ["hyundai", "elantra", 2002, 23.1, 10, 3, 5];
+    let [newMan, newModel, newYear, newMpg] = newCar;
+    console.log("CAR:", newMan, newModel, newYear, newMpg, newCar[4]);
+    console.log("newCar:", newCar);
+
+    lotsOfPeople.forEach(p => {
+        // let name = p[0];
+        // let age = p[1];
+        let [name, age] = p;  // Same as above.
+
+        if (name === 'Itzel') {
+            console.log("FOUND:", p);
+        }
+    });
+
+
+    let appleOne = {
+        name: "apple",
+        color: "red",
+        price: 1000,
+        qtyInStock: 35,
+    }
+
+    console.log("appleOne:", appleOne.color, appleOne.name);
+
+    let { name, color } = appleOne;
+    console.log("appleOne:", color, name, appleOne.price);
+
+    let allFruit = [  // Same as fruitMulti above, but with metadata! An array of objects.
+        appleOne,
+        {
+            name: "banana",
+            color: "yellow",
+            price: 100,
+            qtyInStock: 123,
+        },
+        {
+            name: "cherry",
+            color: "red",
+            price: 250,
+            qtyInStock: 95,
+            origin: "MI",
+        },
+        {
+            name: "durian",
+            color: "green",
+            price: 12000,
+            qtyInStock: 2,
+        },
+    ];
+
+    // Standard
+    allFruit.forEach(function (fruit) {
+        console.log("fruit:", fruit.color, fruit.name);
+    });
+
+    // w/ Destructuring of the fruit
+    allFruit.forEach(function (fruit) {
+        let { price, color, name } = fruit;
+
+        console.log("fruit:", color, name);
+    });
+
+    // w/ Destructuring in the parameter list, as soon as the item comes in.
+    allFruit.forEach(function ({ price, color, name }) {
+        console.log("fruit:", color, name);
+    });
+
+    // Destructuring in the parameter list can also be applied to arrays
+    // From this:
+    lotsOfPeople.forEach(p => {
+        let [name, age] = p;
+
+        if (name === 'Itzel') {
+            console.log("FOUND:", p);
+        }
+    });
+    // To this:
+    lotsOfPeople.forEach(([name, age]) => {
+        if (name === 'Itzel') {
+            console.log("FOUND:", name, age);
+        }
+    });
+
+    // Binding while destructuring on objects allows different variable name
+    // Standard.
+    allFruit.forEach(function ({ price, color, name }) {
+        console.log("fruit:", color, name);
+    });
+    allFruit.forEach(function ({ price, color: pigment, name }) {
+        console.log("fruit:", pigment, name);
+    });
+
+
+
+    // Spread operator on arrays
+    function sum(x, y, z) {
+        return x + y + z;
+    }
+
+    console.log("SUM:", sum(1, 2, 3));
+
+    const numbers = [1, 2, 3];
+    console.log("SUM:", sum(numbers[0], numbers[1], numbers[2]));
+
+    let [one, two, thr] = numbers;
+    console.log("SUM:", sum(one, two, thr));
+
+    console.log("SUM:", sum(...numbers));
+
+    // Create a new array: [1, 2, 3, 7, 8, 9]
+    let bigNumbers1 = numbers.slice();
+    bigNumbers1.push(7, 8, 9);
+    console.log("bigNumbers1:", bigNumbers1);
+
+    let bigNumbers2 = numbers.concat([7, 8, 9]);
+    console.log("bigNumbers2:", bigNumbers2);
+
+    let bigNumbers3 = [1, 2, 3, 7, 8, 9];
+    console.log("bigNumbers3:", bigNumbers3);
+
+    let bigNumbers4 = [...numbers, 7, 8, 9];
+    console.log("bigNumbers3:", bigNumbers4);
+
+    let moreNums = [7, 8, 9];
+
+    let bigMore1 = numbers.concat(moreNums);
+    console.log("bigMore1:", bigMore1);
+
+    let bigMore2 = [...numbers, ...moreNums];
+    console.log("bigMore2:", bigMore2);
+
+
+    // Now w/ objects
+    let appleTwo = {
+        name: "apple",
+        color: "red",
+        price: 1000,
+        qtyInStock: 35,
+    }
+
+    function descFruit1(fruit) {
+        console.log("Fruit1:", fruit.color, fruit.name);
+    }
+    descFruit1(appleTwo);
+
+    function descFruit2({ name, color }) {
+        console.log("Fruit2:", color, name);
+    }
+    descFruit2(appleTwo);
+
+    function descFruit3({ ...appleTwo }) {
+        console.log("Fruit3:", color, name);
+    }
+    descFruit3(appleTwo);
+
+    let newApple1 = structuredClone(appleTwo);
+    newApple1.weight = 120;
+    console.log("newApple1:", newApple1);
+
+    let newApple2 = {
+        color: appleTwo.color,
+        name: appleTwo.name,
+        price: appleTwo.price,
+        qtyInStock: appleTwo.qtyInStock,
+        weight: 150,
+    }
+    console.log("newApple2:", newApple2);
+
+    {
+        let name = appleTwo.name;
+        let color = appleTwo.color;
+        let price = appleTwo.price;
+        let qtyInStock = appleTwo.qtyInStock;
+
+        let newApple3 = {
+            color: color,
+            name: name,
+            price: price,
+            qtyInStock: qtyInStock,
+            weight: 150,
+        }
+        console.log("newApple3:", newApple3);
+
+        // If the value variable name and the property
+        // are the same, just need to specify once.
+        let newApple4 = {
+            color,
+            name,
+            price,
+            qtyInStock,
+            weight: 150,
+        }
+        console.log("newApple4:", newApple4);
+
+        // Now shake in the spread
+        let newApple5 = {
+            ...appleTwo,
+            weight: 150,
+        }
+        console.log("newApple5:", newApple5);
+    }
+</script>
