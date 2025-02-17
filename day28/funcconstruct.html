@@ -1,0 +1,48 @@
+<script>
+    // Function constructor.
+    function DoraChars(name, mainChar, song) {
+        this.name = name;
+        this.main = mainChar;
+        this.song = song;
+
+        // All objects will have a copy of this function/method. Not optimal, since it's
+        // exactly the same for all objects. Better as a prototype function/method.
+        // this.sing = function () {
+        //     console.log(this.song);
+        // }
+    }
+
+    let dora = new DoraChars("Dora", true, "Mochila, mochila!");
+    let boots = new DoraChars("Boots", true, "Lo hicimos!");
+    let diego = new DoraChars("Diego", false, "Al rescate!");
+    let allChars = [dora, boots, diego];
+
+    console.log("DORA:", dora.name);
+    allChars.forEach(function (char) {
+        console.log("CHAR:", char.name);
+    });
+
+    // Same as above. In arrow function format
+    // allChars.forEach(char =>
+    //     console.log("CHAR:", char.name)
+    // );
+
+    // We can create a "global" function for sing. Not bad, but
+    // we can do better with a prototype function/method.
+    // function sing(inChar) {
+    //     console.log(inChar.song);
+    // }
+
+    // sing(dora);
+    // allChars.forEach(char => sing(char));
+
+    // Prototype function/method for all objects created using
+    // the DoraChars constructor.
+    DoraChars.prototype.sing = function () {
+        console.log(this.name + ": " + this.song)
+    }
+
+    dora.sing();
+    allChars.forEach(char => char.sing());
+
+</script>

@@ -1,0 +1,29 @@
+<script>
+    class DoraChars {
+        constructor(name, mainChar, song) {
+            this.name = name;
+            this.main = mainChar;
+            this.song = song;
+        }
+
+        sing() {
+            console.log(this.name + ": " + this.song);
+        }
+
+        toString() {
+            let not = "";
+            if (!this.main) not = " not"
+            return this.name + " is" + not + " a main character.";
+        }
+    }
+
+    let dora = new DoraChars("Dora", true, "Mochila, mochila!");
+    let boots = new DoraChars("Boots", true, "Lo hicimos!");
+    let diego = new DoraChars("Diego", false, "Al rescate!");
+
+    let allChars = [dora, boots, diego];
+    allChars.forEach(char => char.sing());
+
+    allChars.forEach(char => console.log("" + char));
+
+</script>
