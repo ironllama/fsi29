@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 1rem;
+            min-height: 100vh;
+        }
+
+        div {
+            width: 150px;
+            height: 160px;
+            background-color: cornflowerblue;
+            border-radius: 5px;
+        }
+
+        .red {
+            background-color: firebrick;
+        }
+
+        .whitetext {
+            background-color: transparent;
+            font-family: sans-serif;
+            font-size: 2rem;
+            font-weight: bold;
+            line-height: 10rem;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="one"></div>
+    <div id="two" class="red box">
+        <div class="whitetext">Bad</div>
+    </div>
+    <div id="twotwo" class="red box" uno="dos"></div>
+    <div id="three" style="background-color: olivedrab;"></div>
+    <script>
+        let oneById = document.getElementById("one");
+        console.log("bb:", oneById);
+        // console.log(one);  // Possible, but error-prone.
+
+        let one = document.getElementsByTagName("div");
+        console.log(one[0]);
+
+        let two = document.getElementsByClassName("red");
+        console.log(two);
+        console.log(two[0]);
+        console.log(two["two"]);
+        // two.sort();  // Error, this is an HTMLCollection, not true Array
+
+        for (let i = 0; i < two.length; i++) {
+            let elem = two[i];
+            console.log("Two elem:", elem);
+        }
+
+        let listTwo = Array.from(two)  // HTMLCollection -> Array
+        listTwo.sort();
+        console.log(listTwo);
+
+
+        let oneByQS = document.querySelector("#one");
+        console.log("oneByQS:", oneByQS);
+
+        let classQS = document.querySelector(".red");
+        console.log("classQS:", classQS);
+
+        let tagQS = document.querySelector("div");
+        console.log("tagQS:", tagQS);
+
+        let allQS = document.querySelector("*");
+        console.log("allQS:", allQS);
+
+        let classQSAll = document.querySelectorAll(".red");
+        console.log("classQSAll:", classQSAll);
+
+        console.log("classQSAll[1]", classQSAll[1]);
+        classQSAll.forEach(i => console.log("classQSAll: forEach: i:", i));
+
+        for (let i = 0; i < classQSAll.length; i++) {
+            let elem = classQSAll[i];
+            console.log("Two elem:", elem);
+        }
+
+        // Can also convert to Array to get access to other Array functions.
+        let sortedAll = Array.from(classQSAll);
+        sortedAll.sort((a, b) => b.id.length - a.id.length);
+        console.log("SORT:", sortedAll);
+
+        let complex = document.querySelector("body div:first-child#one");
+        console.log("COMPLEX:", complex);
+
+
+        let twotwo = document.querySelector("#twotwo");
+        console.log("TWOTWO:", twotwo);
+        console.log("twotwo id:", twotwo.id, "classes:", twotwo.classList);
+
+        twotwo.classList.add("rounded")
+        twotwo.classList.remove("box");
+        twotwo.classList.add("enabled");
+        console.log("twotwo id:", twotwo.id, "classes:", twotwo.classList);
+        // twotwo.classList.remove("enabled");
+        twotwo.classList.toggle("enabled");
+        console.log("twotwo id:", twotwo.id, "classes:", twotwo.classList);
+        twotwo.classList.toggle("enabled");
+        console.log("twotwo id:", twotwo.id, "classes:", twotwo.classList);
+
+        twotwo.setAttribute("dude", "sweet");
+        twotwo.removeAttribute("uno");
+
+        let three = document.querySelector("#three");
+        three.innerHTML = "<div class='whitetext'>Three</div>";
+
+        // console.log(two[0]);
+        two[0].innerHTML = "";
+    </script>
+</body>
+
+</html>

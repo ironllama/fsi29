@@ -27,6 +27,131 @@
 
 Could you go back and provide a toString() function to the menagerie array, the Animal constructor, and/or the ClassyAnimal class to make this happen? If there are exceptions or inability to override the toString, provide an alternate way to get the output you want for this particular case.
     </pre>
+    <script>
+        // 1. Create an empty array called menagerie.
+        // let menagerie = [];
+        let menagerie = new Array();
+
+        // 2. Create an eagle object with properties to describe the name/type of animal, num of legs, kind of skin, and natural habitat. Also provide it a matingCall method that displays an appropriate string in the console. Put this eagle into the menagerie.
+
+        let eagle = {
+            name: "eagle",
+            numLegs: 2,
+            skin: "feathers",
+            habitat: "mountain",
+            call: "Skreee!",
+            // matingCall: function () { console.log(this.call); }
+        }
+        menagerie.push(eagle);
+
+        // 3. Create similar objects as above, but using a constructor function called Animal, that accepts all the needed properties to create an object. Then use this constructor function to create a whale, a centipede and a turkey, all to be added to the menagerie;
+
+        function Animal(name, numLegs, skin, habitat, call) {
+            this.name = name;
+            this.skin = skin;
+            this.numLegs = numLegs;
+            this.habitat = habitat;
+            this.call = call;
+
+            // Each Animal object has it's own copy of this method.
+            // this.matingCall = function () { console.log(this.call); }
+            // function matingCall() { console.log(this.call); }
+        }
+
+        // One method shared across all objects created using Animal contructor.
+        Animal.prototype.matingCall = function () { console.log(this.call); }
+
+        let whale = new Animal("whale", 0, "leathery", "ocean", "OooWOOOooo");
+        let centipede = new Animal("centipede", 100, "chitin", "forest", "...");
+        let turkey = new Animal("turkey", 2, "feathers", "forest", "gobble gobble");
+
+        menagerie.push(whale, centipede, turkey);
+        // menagerie.push(new Animal("..."), new Animal("..."), new Animal(...))
+
+        whale.matingCall();
+        centipede.matingCall();
+        turkey.matingCall();
+
+        let matingCall = function (animal) { console.log(animal.call); }
+        matingCall(whale);
+        matingCall(centipede);
+        matingCall(turkey);
+
+        // 4. 4. Finally, create a class to create a similar object to those already created above, and call it ClassyAnimal which also has the same properties as Animal, and also has a constructor that behaves just like the one in Animal. Then create an ocelot, a peacock, and a corgi object with this class, also added to the menagerie.
+
+        class ClassyAnimal {
+            constructor(name, numLegs, skin, habitat, call) {
+                this.name = name;
+                this.skin = skin;
+                this.numLegs = numLegs;
+                this.habitat = habitat;
+                this.call = call;
+            }
+
+            matingCall() { console.log(this.call); }
+
+            toString() {
+                return `The ${this.name}'s habitat is the ${this.habitat}`;
+            }
+        }
+
+        let ocelot = new ClassyAnimal("Babou", 4, "fur", "forest", "Miaauuuuu!")
+        let peacock = new ClassyAnimal("peacock", 2, "feather", "forest", "Awwwwaaahhhh!");
+        let corgi = new ClassyAnimal("corgi", 4, "fur", "house", "Woofwoof");
+
+        menagerie.push(ocelot, peacock, corgi);
+
+
+        // 5. Then make only those animals that have 2 legs display their mating calls.
+        // console.log("5.")
+        // menagerie
+        //     .filter(a => a.numLegs === 2)
+        //     .forEach(a => a.matingCall());
+
+
+        // 6. Then make a copy of the menagerie, and but change their names so that the names are backwards. Confirm that you have only changed your copy of the menagerie, and not the original menagerie.
+
+        // Create a duplicate deep copy of menagerie.
+        // let newMange = JSON.parse(JSON.stringify(menagerie));  // Not so efficient. Good for "just get it done".
+
+        let newMenag = [];
+        for (let a of menagerie) {
+            newMenag.push(new ClassyAnimal(a.name, a.numLegs, a.skin, a.habitat, a.call))
+        }
+        // Same as above.
+        // let newMenag = menagerie.map(a => new ClassyAnimal(a.name, a.numLegs, a.skin, a.habitat, a.call));
+
+        // let newMenag = structuredClone(menagerie);  // Newer, seems simpler?
+
+        newMenag.forEach(a =>
+            a.name = a.name
+                .split("")
+                .reverse()
+                .join("")
+        );
+
+        console.log("NEW:", newMenag);
+        console.log("ORIG:", menagerie);
+
+
+        // 7. I want to use the following code to display all the sorted animal names and habitats in the following format, when using console.log(menagerie):
+
+        // "The Centipede's habitat is the forest, The Corgi's habitat is the land, The Eagle's habitat is the air, ..."
+
+        // Reverse newMenag back into forward names.
+        // let resStr = [];
+        // newMenag.forEach(a => {
+        //     a.name = a.name.split("").reverse().join("");
+        //     resStr.push("" + a);
+        // });
+
+        let resStr = [];
+        for (let a of menagerie) {
+            let newca = new ClassyAnimal(a.name, a.numLegs, a.skin, a.habitat, a.call)
+            resStr.push("" + newca);
+        }
+        console.log("7.", resStr.join(", "));
+    </script>
 </body>
 
 </html>
