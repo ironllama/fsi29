@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            min-height: 100vh;
+        }
+
+        body>div {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="one"></div>
+    <div id="two"></div>
+    <script>
+        // innerHTML is rough and destructive. We *recreate* the body in each line, below.
+        let oneElem = document.querySelector("#one");
+
+        oneElem.innerHTML = "<div class='circle'></div>";
+        oneElem.innerHTML = oneElem.innerHTML + "<div class='circle'></div>";
+        oneElem.innerHTML += "<div class='circle'></div>";
+
+        // Adding with document.createElement() leaves the body intact, and just adds
+        // the new stuff to it.
+        let twoElem = document.querySelector("#two");
+
+        function addNewCircle() {
+            let newDiv = document.createElement("div");
+            newDiv.className = "circle";
+            newDiv.style.backgroundColor = "firebrick";
+            twoElem.appendChild(newDiv);
+        }
+        addNewCircle();
+        addNewCircle();
+        addNewCircle();
+
+        let newYellow = document.createElement("div");  // <div></div>
+        newYellow.className = "circle";  // <div class="circle"></div>
+        newYellow.style.backgroundColor = "goldenrod";  // <div class="class" style="background-color: goldenrod;"></div>
+        oneElem.appendChild(newYellow);
+
+        newYellow = document.createElement("div");  // <div></div>
+        newYellow.className = "circle";  // <div class="circle"></div>
+        newYellow.style.backgroundColor = "goldenrod";
+        let thirdRed = document.querySelector("#two>div:nth-child(3)");
+        twoElem.insertBefore(newYellow, thirdRed);
+
+    </script>
+</body>
+
+</html>

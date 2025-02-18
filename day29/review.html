@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 1rem;
+            min-height: 100vh;
+        }
+
+        .circle {
+            /* width: 50px; */
+            /* height: 50px; */
+            border-radius: 50%;
+            background-color: cornflowerblue;
+        }
+
+        .goaway {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="circle" style="width: 200px; height: 200px;"></div> -->
+    <script>
+        // let circle = document.querySelector(".circle");
+        // circle.style.backgroundColor = "firebrick";
+
+        // // let check = false;
+        // setInterval(() => {
+        //     // console.log("Hello!");
+        //     // if (!check) {
+        //     //     circle.style.opacity = 0;
+        //     //     // check = true;
+        //     // }
+        //     // else {
+        //     //     circle.style.opacity = 1;
+        //     //     // check = false;
+        //     // }
+        //     // check = !check;
+
+        //     circle.classList.toggle("goaway");
+        // }, 1000);
+
+        // document.body.innerHTML += "<div class='circle'></div>";
+        // console.log(window);
+        // let maxHeight = document.body.clientHeight;
+        // let maxWidth = document.body.clientWidth;
+        // console.log("MAX:", maxHeight, maxWidth);
+
+        function pytho(xDist, yDist) {
+            return Math.sqrt((xDist ** 2) + (yDist ** 2));
+        }
+
+        function drawRandomCircle() {
+            let maxHeight = document.body.clientHeight;
+            let maxWidth = document.body.clientWidth;
+
+            // newX and newY is from the top left corner
+            let newX = Math.floor(Math.random() * maxWidth);
+            let newY = Math.floor(Math.random() * maxHeight);
+
+            testAndDraw(newX, newY);
+        }
+
+        function testAndDraw(x, y) {
+            let width = 50;
+            let height = 50;
+
+            let newXmid = x + (width / 2);
+            let newYmid = y + (height / 2);
+
+            // console.log("MID:", newXmid, newYmid);
+
+            let allExisting = document.querySelectorAll(".circle");
+            let collision = false;
+            for (let thisCircle of allExisting) {
+                // console.log("TEST:", thisCircle);
+                let thisXmid = parseInt(thisCircle.style.left) + (width / 2);  // 200 + 25
+                let thisYmid = parseInt(thisCircle.style.top) + (height / 2);
+
+                // console.log("TEST MID:", thisXmid, thisYmid);
+
+                let diffX = Math.abs(newXmid - thisXmid);
+                let diffY = Math.abs(newYmid - thisYmid);
+
+                let centerDiff = pytho(diffX, diffY);
+                if (centerDiff < width) {  // If distance is less than diameter, we have collision!
+                    console.log("COLLISION!");
+                    collision = true;
+                    break;
+                }
+            }
+
+            if (!collision) {
+                let newR = Math.floor(Math.random() * 256);
+                let newG = Math.floor(Math.random() * 256);
+                let newB = Math.floor(Math.random() * 256);
+
+                document.body.innerHTML += `
+                <div
+                    class="circle"
+                    style="
+                        width: ${width}px;
+                        height: ${height}px;
+                        position: absolute;
+                        top: ${y}px;
+                        left: ${x}px;
+                        background-color: rgb(${newR}, ${newG}, ${newB});
+                    "
+                    ></div>`;
+            }
+        }
+
+        // The callback function runs every x milliseconds.
+        // setInterval(drawRandomCircle, 500);
+        // setTimeout(function () {
+        //     setInterval(drawRandomCircle, 500);
+        // }
+        //     , 100);
+        // setTimeout(() => setInterval(drawRandomCircle, 500), 200);
+
+        function dropCircle() {
+            let randDelay = Math.round(Math.random() * 500);
+            setTimeout(() => {
+                drawRandomCircle();
+                dropCircle();
+            }, randDelay);
+        }
+        dropCircle();
+
+        // testAndDraw(200, 200);  // 225, 225
+        // testAndDraw(220, 200);  // 245, 225
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Events</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            min-height: 100vh;
+        }
+
+        body>div {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: cornflowerblue;
+            box-shadow: 10px 10px 10px gray;
+        }
+
+        #two {
+            background-color: firebrick;
+        }
+
+        .clicked {
+            animation: 0.5s shrinkGrow;
+        }
+
+        @keyframes shrinkGrow {
+            0% {
+                width: 150px;
+                height: 150px;
+                box-shadow: 10px 10px 10px gray;
+            }
+
+            50% {
+                width: 140px;
+                height: 140px;
+                box-shadow: none;
+            }
+
+            100% {
+                width: 150px;
+                height: 150px;
+                box-shadow: 10px 10px 10px gray;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="circle" id="one"></div>
+    <div class="circle" id="two"></div>
+    <script>
+        let oneElem = document.querySelector("#one");
+
+        oneElem.addEventListener("click", function () {
+            // oneElem.style.width = (oneElem.clientWidth - 20) + "px";
+            // oneElem.style.height = (oneElem.clientHeight - 20) + "px";
+            // oneElem.style.boxShadow = "5px 5px 10px gray";
+
+            // setTimeout(() => {
+            //     oneElem.style.width = (oneElem.clientWidth + 20) + "px";
+            //     oneElem.style.height = (oneElem.clientHeight + 20) + "px";
+            //     oneElem.style.boxShadow = "10px 10px 10px gray";
+            // }, 500);
+            oneElem.classList.toggle("clicked");
+            setTimeout(() => oneElem.classList.toggle("clicked"), 500);
+        });
+    </script>
+</body>
+
+</html>
