@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .square {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            /* background-color: cornflowerblue; */
+            /* background-color: hsl(219, 79%, 66%); */
+            background-color: hsl(0 100% 50%);
+            /* transition: 5s background-color; */
+        }
+
+        .blue {
+            /* background-color: firebrick; */
+            /* background-color: hsl(0, 67.92%, 41.57%); */
+            animation: 1s reverse colorshift;
+        }
+
+        .purple {
+            animation: 1s forwards colorshift2;
+        }
+
+        .green {
+            background-color: olivedrab;
+            padding: 5rem;
+            border-radius: 10px;
+        }
+
+        .yellow {
+            background-color: goldenrod;
+            padding: 5rem;
+            border-radius: 10px;
+        }
+
+        @keyframes colorshift {
+            0% {
+                background-color: hsl(0 100% 50%);
+            }
+
+            10% {
+                background-color: hsl(0 100% 50%);
+            }
+
+            20% {
+                background-color: hsl(30 100% 50%);
+            }
+
+            30% {
+                background-color: hsl(60 100% 50%);
+            }
+
+            40% {
+                background-color: hsl(90 100% 50%);
+            }
+
+            50% {
+                background-color: hsl(120 100% 50%);
+            }
+
+            60% {
+                background-color: hsl(150 100% 50%);
+            }
+
+            70% {
+                background-color: hsl(180 100% 50%);
+            }
+
+            80% {
+                background-color: hsl(210 100% 50%);
+            }
+
+            90% {
+                background-color: hsl(240 100% 50%);
+            }
+
+            100% {
+                background-color: hsl(270 100% 50%);
+            }
+
+            /* 10% {
+                background-color: hsl(300 100% 50%);
+            }
+
+            10% {
+                background-color: hsl(330 100% 50%);
+            } */
+        }
+
+        @keyframes colorshift2 {
+            0% {
+                background-color: hsl(0 100% 50%);
+            }
+
+            10% {
+                background-color: hsl(0 100% 50%);
+            }
+
+            20% {
+                background-color: hsl(30 100% 50%);
+            }
+
+            30% {
+                background-color: hsl(60 100% 50%);
+            }
+
+            40% {
+                background-color: hsl(90 100% 50%);
+            }
+
+            50% {
+                background-color: hsl(120 100% 50%);
+            }
+
+            60% {
+                background-color: hsl(150 100% 50%);
+            }
+
+            70% {
+                background-color: hsl(180 100% 50%);
+            }
+
+            80% {
+                background-color: hsl(210 100% 50%);
+            }
+
+            90% {
+                background-color: hsl(240 100% 50%);
+            }
+
+            100% {
+                background-color: hsl(270 100% 50%);
+            }
+
+            /* 10% {
+                background-color: hsl(300 100% 50%);
+            }
+
+            10% {
+                background-color: hsl(330 100% 50%);
+            } */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="yellow">
+        <div class="green">
+            <div class="square purple"></div>
+        </div>
+    </div>
+    <script>
+        // let bluebox = document.querySelector(".square");
+        // bluebox.addEventListener("mouseover", function () {
+        //     // bluebox.style.backgroundColor = "firebrick";
+        //     bluebox.classList.toggle("purple");
+        //     bluebox.classList.toggle("blue");
+        // });
+        // bluebox.addEventListener("mouseout", function (event) {
+        //     // bluebox.style.backgroundColor = "cornflowerblue";
+        //     bluebox.classList.toggle("purple");
+        //     bluebox.classList.toggle("blue");
+
+        //     console.log("EVENT:", event);
+        // });
+
+        document.querySelector(".yellow")
+            // .addEventListener("mousemove", (evt) => {
+            //     console.log("EVT:", evt);
+            // });
+            .addEventListener("click", (evt) => {
+                console.log("YELLOW CLICK", evt);
+            });
+
+        document.querySelector(".green")
+            // .addEventListener("mousemove", (evt) => {
+            //     console.log("EVT:", evt);
+            // });
+            .addEventListener("click", (evt) => {
+                console.log("GREEN CLICK", evt);
+
+                // Don't ask any more parents for handling this event.
+                evt.stopPropagation();
+            });
+
+        document.querySelector(".purple")
+            .addEventListener("click", (evt) => {
+                console.log("RED CLICK", evt);
+            });
+
+        // // Flexible parameter list.
+        // function sayHello(color, name = "Flavia") {
+        //     if (color != null) color = "Green";  // Manually set default value.
+        //     // if (color !== null && color !== undefined) color = "Green";  // Manually set default value.
+        //     // if (!color) color = "Green";
+
+        //     console.log("SAY HELLO:", arguments);
+
+        //     console.log(`Hello, ${name}! Your color is ${color}`);
+        //     // console.log(`Hello, you!`);
+        // }
+        // sayHello("Red");
+        // // sayHello("Jorge");
+        // // sayHello("Diego");
+        // // sayHello();
+        // // sayHello("Peter", "Paul", "Mary");
+
+        // function what() {
+        //     for (let arg of arguments) console.log("GOT:", arg);
+        // }
+        // what("one", "two", "blue");
+    </script>
+</body>
+
+</html>

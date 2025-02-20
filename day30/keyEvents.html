@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Events</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 2rem;
+            min-height: 100vh;
+            font-family: sans-serif;
+            font-size: 1.5rem;
+        }
+
+        input {
+            width: 20rem;
+            font-size: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <label>
+        Word:
+        <input />
+    </label>
+
+    <div>
+        <label for="secondWord">Second:</label>
+        <input id="secondWord" disabled />
+        <!-- <input id="secondWord" readonly /> -->
+    </div>
+    <script>
+        function Person(name) {
+            this.name = name;
+        }
+        let bob = new Person("Robert");
+        bob.height = 200;
+
+        class Fruit {
+            constructor(name) {
+                this.name = name;
+            }
+        }
+        let mango = new Fruit("mango");
+
+        let firstInput = document.querySelector("body>label>input");
+        let secondInput = document.querySelector("#secondWord");
+
+        firstInput.addEventListener("input", function (evt) {
+            // firstInput.addEventListener("input", (evt) => {
+            // console.log("EVT:", evt);
+            console.log("INPUT:", firstInput.value);
+            console.log("INPUT:", evt.target.value);
+            console.log("INPUT:", this.value);
+        });
+
+        firstInput.addEventListener("change", function () {
+            console.log("CHANGE:", firstInput.value);
+        });
+
+        firstInput.addEventListener("keyup", (event) => {
+            // console.log("KEY:", event);
+            if (event.key === "Enter") {
+                if (firstInput.value === "llave") {
+                    secondInput.disabled = false;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
