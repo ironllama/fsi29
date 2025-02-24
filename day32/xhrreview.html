@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Breeds</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: sans-serif;
+        }
+
+        body>* {
+            text-align: center;
+        }
+
+        button {
+            font-weight: bold;
+            font-size: 1.5rem;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            min-height: 2rem;
+            min-width: 10rem;
+            background-color: cornflowerblue;
+            color: white;
+            cursor: pointer;
+        }
+
+        img {
+            display: block;
+            height: 20rem;
+            width: 20rem;
+            border-radius: 10px;
+            background-color: cornflowerblue;
+            margin: 1rem 0 2rem;
+        }
+
+        .breed {
+            font-size: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button>Get New Dog</button>
+        <img src="" alt="" />
+        <div class="breed">-- loading --</div>
+    </div>
+    <script>
+        let buttonElem = document.querySelector("button");
+        let imgElem = document.querySelector("img");
+        let breedElem = document.querySelector(".breed");
+
+        buttonElem.addEventListener("click", function () {
+            // Get a new image and put the image and breed into the HTML
+            let xhrThing = new XMLHttpRequest();
+            xhrThing.addEventListener("load", function () {
+                console.log(xhrThing.responseText);
+
+                // Turn the returned JSON string into a JS object.
+                let resObj = JSON.parse(xhrThing.responseText);
+
+                // Extract the data we want from the returned object
+                // console.log("URL:", resObj.message);
+                // console.log("URL split by slashes:", resObj.message.split("/"));
+                let urlParts = resObj.message.split("/");
+                let breed = urlParts[4];
+                breed = breed.replace("-", " ");
+
+                // Alter the HTML appropriately
+                imgElem.src = resObj.message;
+                imgElem.alt = breed;
+
+                breedElem.innerHTML = breed;
+            });
+            xhrThing.open("GET", "https://dog.ceo/api/breeds/image/random");
+            xhrThing.send();
+        });
+
+        buttonElem.click();
+    </script>
+</body>
+
+</html>

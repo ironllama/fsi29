@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktails</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        #left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            padding: 2rem;
+        }
+
+        input {
+            min-width: 15rem;
+            font-size: 1.5rem;
+            font-family: inherit;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        #results {
+            position: relative;
+        }
+
+        #results ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            /* outline: 1px solid red; */
+            border: 1px solid gray;
+            top: -8px;
+            left: 4px;
+            min-width: 20rem;
+            background-color: white;
+            overflow-y: scroll;
+            max-height: 200px;
+        }
+
+        #results ul li {
+            padding: 0 0.5rem;
+        }
+
+        #results ul li:hover {
+            background-color: cornflowerblue;
+            color: white;
+        }
+
+        button {
+            width: fit-content;
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 0.5rem 3rem;
+            background-color: firebrick;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-left: 5px;
+        }
+
+        #middle {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 2rem;
+        }
+
+        #right {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        #right img {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: rgba(100, 100, 200, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="left">
+        Enter the name of a drink:
+        <input type="search" />
+        <div id="results">
+            <!-- <ul>
+                <li>one</li>
+                <li>one</li>
+                <li>one</li>
+                <li>one</li>
+                <li>one</li>
+            </ul> -->
+        </div>
+        <button>Go</button>
+    </div>
+    <div id="middle">
+        <!-- <h1>Margarita</h1>
+        <p>
+        <h3>Ingredients:</h3>
+        <ul>
+            <li>one</li>
+            <li>one</li>
+            <li>one</li>
+        </ul>
+        </p>
+        <p>
+        <h3>Directions:</h3>
+        Stir it all together and enjoy.
+        </p> -->
+    </div>
+    <div id="right">
+        <!-- <img src="" alt="" /> -->
+    </div>
+    <script>
+        const inputElem = document.querySelector("input");
+        const buttonElem = document.querySelector("button");
+        const resultsElem = document.querySelector("#results");
+        const middleElem = document.querySelector("#middle");
+        const rightElem = document.querySelector("#right");
+
+        let allDrinks = null;
+        fetch("http://192.168.3.113:3000/getAllDrinks")
+            .then(res => res.json())
+            .then(obj => allDrinks = obj.filter(d => d != null));
+
+        inputElem.addEventListener("input", function () {
+            if (inputElem.value.length >= 3) {
+                const filteredDrinks = allDrinks.filter(d => d.strDrink.toLowerCase().includes(inputElem.value.toLowerCase()));
+
+                // console.log("FILTERED:", filteredDrinks);
+                if (filteredDrinks.length > 0) {
+                    const ulElem = document.createElement("ul");
+                    resultsElem.innerHTML = "";  // Remove existing results.
+                    resultsElem.appendChild(ulElem);
+
+                    filteredDrinks.forEach(d => {
+                        const liElem = document.createElement("li");
+                        liElem.innerHTML = d.strDrink;
+
+                        ulElem.appendChild(liElem);
+                        liElem.addEventListener("click", () => {
+                            // console.log("SELECTED:", d);
+                            showData(d);
+                            resultsElem.innerHTML = "";
+                            inputElem.focus();
+                        })
+                    });
+                }
+            }
+            else if (inputElem.value === "") {
+                resultsElem.innerHTML = "";
+            }
+        });
+
+        function showData(drink) {
+            let htmlStr = `
+                <h1>${drink.strDrink}</h1>
+                <p>
+                    <h3>Ingredients:</h3>
+                    <ul>
+                `;
+
+            for (let i = 1; i <= 15; i++) {
+                if (drink["strIngredient" + i] != null) {
+                    htmlStr += `<li>${drink["strIngredient" + i]}</li>`;
+                }
+            }
+
+            htmlStr += `
+                    </ul>
+                </p>
+                <p>
+                    <h3>Directions:</h3>
+                    ${drink.strInstructions}
+                </p>
+                `;
+
+            middleElem.innerHTML = htmlStr;
+
+            rightElem.innerHTML = `<img src="${drink.strDrinkThumb}" alt="${drink.strDrink}"/>`;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universities</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            font-family: sans-serif;
+        }
+
+        input {
+            font-size: 1.25rem;
+            padding: 0.5rem;
+            min-width: 17rem;
+        }
+
+        button {
+            background-color: cornflowerblue;
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
+            margin-left: 0.5rem;
+            padding: 0.66rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .matches {
+            margin: 0.5rem;
+            padding: 0;
+            font-size: 1.5rem;
+            min-width: 23rem;
+            max-height: 20rem;
+            overflow-y: scroll;
+            background-color: white;
+            position: absolute;
+            z-index: 10;
+            display: none;
+        }
+
+        .matches>a {
+            display: block;
+        }
+
+        .matches>a:focus {
+            background-color: cornflowerblue;
+            color: white;
+        }
+
+        .info {
+            min-width: 23rem;
+            min-height: 12rem;
+            padding: 2rem;
+            margin: 1rem;
+            font-size: 1.25rem;
+            line-height: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="inputArea">
+        <input id="userInput" autofocus>
+        <button>Go</button>
+        <div class="matches"></div>
+    </div>
+    <div class="info"></div>
+
+    <script>
+        // Get the list of all schools from the API.
+        const xhrSchools = new XMLHttpRequest();
+        xhrSchools.open("GET", "http://universities.hipolabs.com/search?country=United+States");
+        xhrSchools.addEventListener("load", () => {
+            // console.log("RES:", xhrSchools.responseText);
+            let jsonObj = JSON.parse(xhrSchools.responseText);
+            activateInput(jsonObj);
+        });
+        xhrSchools.send();
+
+        // Add the event listeners. These are done after the schools are loaded.
+        function activateInput(allSchools) {
+            // Get the variables to the stuff in the DOM tree.
+            const inputElem = document.querySelector("input");
+            const matchesElem = document.querySelector(".matches");
+            const buttonElem = document.querySelector("button");
+            const infoElem = document.querySelector(".info");
+
+            function setInputValue(schoolName) {
+                inputElem.value = schoolName;  // Make input match what we clicked on.
+                inputElem.focus();
+
+                // Blank out the matches, once we've clicked on an item in the list.
+                // matchesElem.innerHTML = "";
+                matchesElem.replaceChildren();
+                matchesElem.style.display = "none";
+            }
+
+            function submitSchool() {
+                // Find the school that matches what we typed into the input.
+                const matchingSchool =
+                    allSchools
+                        .find(school => school.name.toLowerCase() === inputElem.value.toLowerCase())
+
+                // Since Array.prototype.find returns an undefined if it doesn't find a match, we test for it.
+                if (matchingSchool !== undefined) {  // If we found a match...
+                    // console.log("DETAILS:", matchingSchool);
+
+                    matchesElem.replaceChildren();
+                    matchesElem.style.display = "none";
+
+                    // Fill in the matchingSchool inside the info area.
+                    let newHtml = `<div>Name: ${matchingSchool.name}</div>`;
+
+                    // for (let i = 0; i < matchingSchool.web_pages.length; i++) {
+                    //     const link = matchingSchool.web_pages[i];
+                    for (const link of matchingSchool.web_pages) {  // for of loop
+                        newHtml += `<div>Pages: <a href="${link}" target="_blank">${link}</a></div>`
+                    }
+                    newHtml += `<div>Country: ${matchingSchool.country}</div>`;
+
+                    infoElem.innerHTML = newHtml;
+                }
+            }
+
+            inputElem.addEventListener("input", () => {
+                if (inputElem.value.length > 2) {
+                    // let matchingSchoolNames =
+                    // allSchools
+                    //     .filter(school => school.name.toLowerCase().includes(inputElem.value.toLowerCase()))
+                    //     .map(school => school.name);
+                    // allSchools
+                    //     .map(school => school.name)
+                    //     .filter(school => school.toLowerCase().includes(inputElem.value.toLowerCase()))
+
+                    // matchesElem.innerHTML = "";  // Clear out old matches.
+                    matchesElem.replaceChildren();
+
+                    // Add new matches.
+                    matchesElem.style.display = "block";
+                    allSchools
+                        .filter(school => school.name.toLowerCase().includes(inputElem.value.toLowerCase()))
+                        .forEach((school, i) => {
+                            // Create new item to add to matches list.
+                            const newItem = document.createElement("a");
+                            // newItem.href="#";
+                            newItem.tabIndex = i;  // For the focus to work properly.
+                            newItem.innerHTML = school.name;
+                            matchesElem.appendChild(newItem);
+
+                            newItem.addEventListener("click", () => {
+                                setInputValue(school.name);  // Make input match what we clicked on.
+                            });
+
+                            newItem.addEventListener("keydown", (evt) => {
+                                if (i > 0 && evt.key === "ArrowUp") {
+                                    matchesElem.children[i - 1].focus();
+                                    inputElem.value = matchesElem.children[i - 1].innerHTML;
+                                }
+                                else if (i < matchesElem.children.length - 1 && evt.key === "ArrowDown") {
+                                    matchesElem.children[i + 1].focus();
+                                    inputElem.value = matchesElem.children[i + 1].innerHTML;
+                                }
+                                else if (evt.key === "Enter") {
+                                    setInputValue(school.name);
+                                }
+                            });
+
+                            // newItem.addEventListener("keyup", (evt) => {
+                            //     if (evt.key === "Enter") {
+                            //         setInputValue(school.name);
+                            //     }
+                            // });
+                        })
+                }
+            });
+
+            inputElem.addEventListener("keyup", (evt) => {
+                // console.log("INPUT EVENT:", evt);
+                if (matchesElem.style.display !== "none" && evt.key === "ArrowDown") {
+                    // console.log("MATCH:", matchesElem.children[0]);
+                    matchesElem.children[0].focus();
+                }
+                else if (evt.key === "Enter") {
+                    matchesElem.replaceChildren();
+                    submitSchool();
+                }
+            });
+
+            buttonElem.addEventListener("click", submitSchool)
+        }
+
+    </script>
+</body>
+
+</html>

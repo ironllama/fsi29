@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callbacks</title>
+</head>
+
+<body>
+    <div id="thing">Start here.</div>
+    <script>
+        // let thingElem = document.querySelector("#thing");
+
+        // thingElem.addEventListener("click", function () {
+        //     // Get a new joke from the API.
+        //     const xhrThing = new XMLHttpRequest();  // Create
+        //     xhrThing.open("GET", "https://official-joke-api.appspot.com/random_joke");  // Setup
+        //     xhrThing.addEventListener("load", function () {  // When response received
+        //         // console.log("RESPONSE:", xhrThing.response);
+        //         let responseObject = JSON.parse(xhrThing.response);  // JSON text --> JS Object
+
+        //         setTimeout(() => {
+        //             document.body.addEventListener("click", function () {
+
+        //             });
+        //         }, 1000);
+        //     });
+        //     xhrThing.send();  // GO GO GO!
+        // });
+
+        function thirdThing() {
+            let rand = Math.ceil(Math.random() * 5) * 1000;
+            setTimeout(function () {
+                console.log("Inside third thing!");
+            }, rand);
+        }
+
+        function thirdThingPromise() {
+            return new Promise((res, rej) => {
+                let rand = Math.ceil(Math.random() * 5) * 1000;
+                setTimeout(function () {
+                    console.log("Inside third thing!");
+                    res();
+                }, rand);
+            })
+        }
+
+        function anotherThing(two) {
+            let rand = Math.ceil(Math.random() * 5) * 1000;
+            setTimeout(function () {
+                console.log("Inside anotherThing!");
+                two();
+            }, rand);
+        }
+
+        function anotherThingPromise(two) {
+            return new Promise(function (res, rej) {
+                let rand = Math.ceil(Math.random() * 5) * 1000;
+                setTimeout(function () {
+                    console.log("Inside anotherThing!");
+                    res();
+                }, rand);
+            });
+        }
+
+        function doThing(one) {
+            let rand = Math.ceil(Math.random() * 5) * 1000;
+            setTimeout(function () {
+                console.log("Inside doThing!");
+                one(thirdThing);
+            }, rand);
+        }
+
+        function doThingPromise() {
+            let ret = new Promise(function (res, rej) {
+                let rand = Math.ceil(Math.random() * 5) * 1000;
+                setTimeout(function () {
+                    console.log("Inside doThing!");
+                    res();
+                }, rand);
+            });
+
+            return ret;
+        }
+
+        // function start() {
+        //     console.log("Inside start!");
+        //     let rand = Math.ceil(Math.random() * 5) * 1000;
+        //     setTimeout(function () {
+        //         doThing(anotherThing);
+        //     }, rand);
+        // }
+        // start();
+
+        // function newStart() {
+        //     console.log("Inside newStart!");
+        //     doThing(function () {
+        //         // console.log("Inside first level.(doThing)");
+        //         anotherThing(function () {
+        //             // console.log("Inside second level.(anotherThing)");
+        //             thirdThing();
+        //         });
+        //     });
+        // }
+        // newStart();
+
+        function newStartPromise() {
+            return new Promise((res, rej) => {
+                console.log("Inside newStart!");
+                res(100);
+            });
+        }
+
+        // newStartPromise().then(function (val) {
+        //     console.log("FIRST:", val);
+        //     doThingPromise().then(() => {
+        //         anotherThingPromise().then(() => {
+        //             thirdThingPromise().then(() => {
+        //                 console.log("FINISHED");
+        //             });
+        //         });
+        //     });
+        // });
+
+        // Same as above, but using returns in each body
+        // to chain promises.
+        newStartPromise()
+            .then((val) => {
+                console.log("FIRST:", val);
+                return doThingPromise();
+            })
+            .then(() => {
+                return anotherThingPromise();
+            })
+            .then(() => {
+                return thirdThingPromise();
+            })
+            .then(() => {
+                console.log("FINISHED");
+            })
+            .catch((err) => console.error("OOPS:", err));
+
+    </script>
+</body>
+
+</html>
