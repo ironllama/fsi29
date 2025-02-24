@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XHR</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: sans-serif;
+            font-size: 1.25rem;
+            gap: 2rem;
+        }
+
+        body>div:first-child {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 1rem;
+            text-align: right;
+        }
+
+        input {
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        form {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div>Temperature: <span id="temp">0</span></div>
+    <form>
+        <label>Name: <input name="thename" /></label>
+        <label>Color: <input name="color" /></label>
+        <label>City: <input id="city" name="city" /></label>
+        <!-- <button>Submit</button> -->
+
+        <!-- Same as above. -->
+        <!-- <button type="submit">Submit</button> -->
+
+        <!-- Change the type if you don't want the default behavior of a submit button. -->
+        <button type="button">Submit</button>
+    </form>
+    <script>
+        let tempElem = document.querySelector("#temp");
+        let nameElem = document.querySelector("form label:first-child input");
+        let colorElem = document.querySelector("form label:nth-child(2) input");
+        let cityElem = document.querySelector("#city");
+        let submitButton = document.querySelector("button");
+        let formElem = document.querySelector("form");
+
+        function getWeather() {
+            let myXHR = new XMLHttpRequest();
+            // myXHR.addEventListener("load", function () {
+            //     // console.log(myXHR.responseText);
+            //     tempElem.innerHTML = myXHR.responseText;
+            // });
+            // myXHR.open("GET", `https://wttr.in/${city.value}?format=3`);
+            // myXHR.send();
+
+            myXHR.addEventListener("load", function () {
+                // console.log(myXHR.responseText);
+                tempElem.innerHTML = myXHR.responseText;
+            });
+            myXHR.open("POST", `destination.html`);
+
+            let dataToSend = {
+                theName: nameElem.value,
+                color: colorElem.value,
+                city: cityElem.value,
+            }
+            let dataToSendAsString = JSON.stringify(dataToSend);
+
+            myXHR.send(dataToSendAsString);
+        }
+
+        cityElem.addEventListener("keyup", function (evt) {
+            if (evt.key === "Enter") {
+                getWeather();
+            }
+        });
+
+        submitButton.addEventListener("click", function () {
+            // formElem.submit();
+            getWeather();
+        });
+
+    </script>
+</body>
+
+</html>
