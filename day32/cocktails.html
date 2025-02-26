@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktails</title>
+    <link rel="stylesheet" href="combo/combo.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            font-family: sans-serif;
+        }
+
+        .drinkDeets {
+            margin: auto;
+            max-width: 80%;
+            padding: 0rem 13rem;
+            margin: auto;
+        }
+
+        .drinkTitle {
+            margin-bottom: 1rem;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .drinkName {
+            font-size: 2rem;
+        }
+
+        .drinkDeets img {
+            display: block;
+            margin: 2rem auto 0;
+            width: 25rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="drinkInput"></div>
+
+    <script src="combo/combo.js"></script>
+    <script>
+        const xhrChamps = new XMLHttpRequest();
+        xhrChamps.open("GET", "http://192.168.3.113:3000/getAllDrinks");
+        xhrChamps.addEventListener("load", () => {
+            // let editedText = xhrChamps.responseText.replaceAll("strDrink", "name");
+            // console.log("EDITED:", editedText);
+            // let drinksArr = JSON.parse(editedText)
+            //     .filter(drink => drink != null);
+
+            // let respobj = json.parse(xhrchamps.responsetext);
+            // respobj = respobj.filter(drink => drink != null);
+            // respobj = respobj.map(drink => {
+            //     drink.name = drink.strstrdrink;
+            //     return drink;
+            // });
+            // Same as above.
+            let drinksArr = JSON.parse(xhrChamps.responseText)
+                .filter(drink => drink != null)
+            // .map(drink => {
+            //     drink.name = drink.strDrink;
+            //     return drink;
+            // });
+
+            createCombo("drinkInput", drinksArr, "strDrink", drinkDeets);
+        });
+        xhrChamps.send();
+
+        function drinkDeets(thisDrink) {
+            let newHTML = `
+                <div class="drinkDeets">
+                    <div class="drinkTitle"><span class="drinkName">${thisDrink.strDrink}</span> - ${thisDrink.strCategory}</div>
+            `;
+
+            for (let i = 1; i <= 15; i++) {
+                if (thisDrink["strIngredient" + i] !== null) {
+                    newHTML += `<div class="drinkIngredient">${thisDrink["strMeasure" + i] ?? ""} ${thisDrink["strIngredient" + i]}</div>`;
+                }
+            }
+
+            newHTML += `
+                    <div class="drinkInstructions">${thisDrink.strInstructions}</div>
+                    <img src="${thisDrink.strDrinkThumb}">
+                </div>
+            `;
+
+            return newHTML;
+        }
+    </script>
+</body>
+
+</html>

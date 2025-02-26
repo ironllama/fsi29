@@ -1,0 +1,5 @@
+Exercise: Create a chat UI, with the two major portions typical of a chat app:
+- An area for the user to input a message and send it to others. This should have a "send" button, should the user want to click on a button as well as reacting to an 'Enter' key to send the message.
+- An area to display all the messages received from the server. This display portion can be split into two parts, the left side for the messages from others, and the right side for messages sent by the user. Each message should also contain the date/time the message was sent along with the message text. If the message was received, it should also show the other user that originally sent the message.
+
+I'll provide an API shortly for your chat UI to connect to and exchange messages.

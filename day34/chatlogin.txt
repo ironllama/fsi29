@@ -1,0 +1,9 @@
+Exercise: We're going to extend the chat app that we built yesterday by adding in a login mechanism.
+
+- Provide a UI for a user to identify themselves to your chat app. This can implemented as a new page, or as a modal dialog that appears over your page. Whatever way you choose, make sure to automatically send unauthenticated users to this login mechanism.
+- The login mechanism also provides a way for a user to create a new account, with a user selected username and password.
+- Use the agreed upon API specs to connect your login mechanism to your chat app. Provide logic to handle all the possible responses.
+- Remember to hash you passwords before sending to the backend -- look up an appropriate hash algorithm that you would to use. Note that the algorithm would need to run on a browser.
+- BONUS: If a user has already logged in (without manually logging out), returning to your chat app will automatically assume their last used identity. This should apply for closing and reopening tabs and the browser itself.
+
+Exercise Part II: Now that we have authentication out of the way, we need to implement a rudimentary authorization mechanism. We're going to use tokens -- the server will return a string token on successful login. Each request to the `/getChats` and the `/sendChat` needs to include this token in the header of the request, under the property Authorization, using a Bearer token. Refer to the MDN for more details.

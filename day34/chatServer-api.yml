@@ -1,0 +1,227 @@
+openapi: 3.0.0
+
+info:
+  title: Chat API
+  description: Chat API
+  version: 1.0.0
+
+servers:
+  - url: https://4aec-210-205-1-194.ngrok-free.app/
+    description: Development
+
+paths:
+  /createUser:
+    post:
+      summary: Create a new user.
+      description: Accepts a username and password to create a new user.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AuthData"
+      responses:
+        200:
+          description: Data saved.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: OK. User created.
+        400:
+          description: Invalid data. Possibly duplicate username.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Invalid data. Possibly duplicate username.
+        500:
+          $ref: "#/components/responses/ServerError"
+
+  /login:
+    post:
+      summary: Validates a user and password for authentication purposes.
+      description: Validates a user and password for authentication purposes.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AuthData"
+      responses:
+        200:
+          description: Data saved.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: OK. User authenticated.
+                  token:
+                    type: string
+                    example: alice:rbmmevkybgvbg9r1rpv9s
+        401:
+          description: Invalid username and password.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Invalid username and/or password.
+        500:
+          $ref: "#/components/responses/ServerError"
+
+  /getChats:
+    get:
+      security:
+        - BearerAuth: []
+      summary: Gets all the chat messages
+      description: |
+        Returns JSON-encoded data for all the chat messages.
+      responses:
+        200:
+          description: Array of all the messages.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AllMessages"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+  /sendChat:
+    post:
+      security:
+        - BearerAuth: []
+      summary: Send a new message
+      description: Add a new message to chat history
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Message"
+      responses:
+        200:
+          $ref: "#/components/responses/Message"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        401:
+          $ref: "#/components/responses/Unauthorized"
+        500:
+          $ref: "#/components/responses/ServerError"
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+
+  responses:
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    Message:
+      description: Response that includes only an object with a message property.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: OK. Operation successful.
+    ServerError:
+      description: Server Error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+
+    Unauthorized:
+      description: Invalid token
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: Unauthorized
+  schemas:
+    # Source: https://www.postman.com/postman/workspace/postman-intergalactic
+    ErrorResponse:
+      required:
+        - errors
+      properties:
+        errors:
+          type: array
+          minItems: 1
+          items:
+            required:
+              - code
+              - message
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+
+    AllMessages:
+      type: array
+      items:
+        $ref: "#/components/schemas/DatedMessage"
+
+    DatedMessage:
+      allOf:
+        - $ref: "#/components/schemas/Date"
+        - $ref: "#/components/schemas/Message"
+
+    Date:
+      type: object
+      properties:
+        date:
+          type: string
+          format: datetime
+          example: "2024-04-29T03:23:13.171Z"
+
+    Message:
+      type: object
+      required:
+        - name
+        - text
+      properties:
+        name:
+          type: string
+          example: Alice
+        text:
+          type: string
+          example: "Can you hear me, now?"
+
+    AuthData:
+      type: object
+      required:
+        - name
+        - pass
+      properties:
+        name:
+          type: string
+          minLength: 4
+          maxLength: 255
+          example: alice
+        pass:
+          type: string
+          minLength: 16
+          maxLength: 255
+          example: dkJdk2ikd98skfjal

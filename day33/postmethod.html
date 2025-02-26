@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POST Method</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: sans-serif;
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            font-size: 2rem;
+        }
+
+        input,
+        textarea,
+        button {
+            font-size: inherit;
+        }
+
+        label:nth-child(2) textarea {
+            vertical-align: top;
+            height: 4em;
+        }
+
+        button {
+            width: fit-content;
+            padding: 0.5rem 3rem;
+            margin: 2rem auto 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Enter your data!</h1>
+    <!-- <form method="post" action="https://jsonplaceholder.typicode.com/posts"> -->
+    <form>
+        <label>
+            Title:
+            <input name="title" />
+        </label>
+        <label>
+            Body:
+            <textarea name="body"></textarea>
+        </label>
+        <button type="button">Send</button>
+    </form>
+
+    <script>
+        let sendButton = document.querySelector("button");
+        let titleInput = document.querySelector("input");
+        let bodyInput = document.querySelector("textarea");
+
+        sendButton.addEventListener("click", () => {
+            let payload = {
+                title: titleInput.value,
+                body: bodyInput.value,
+                userId: 2,
+            }
+
+            // fetch(
+            //     'https://jsonplaceholder.typicode.com/posts',
+            //     {  // Options
+            //         method: 'POST',
+            //         headers: { 'Content-type': 'application/json; charset=UTF-8' },
+            //         body: JSON.stringify(payload),
+            //     }
+            // )
+            //     .then((response) => response.json())
+            //     .then((jsonObj) => console.log(jsonObj));
+
+            // XHR version of the fetch above.
+            // const xhrOption = new XMLHttpRequest();
+            // xhrOption.open("POST", "https://jsonplaceholder.typicode.com/posts");
+            // xhrOption.setRequestHeader("Content-Type", "application/json");
+            // xhrOption.addEventListener("load", () => {
+            //     let jsonObj = JSON.parse(xhrOption.responseText);
+            //     console.log("RETURNED:", jsonObj);
+            // });
+            // xhrOption.send(JSON.stringify(payload));
+
+
+            // fetch("https://f04e-210-205-1-194.ngrok-free.app", {
+            fetch("http://192.168.3.113:3000/sendChat", {
+                method: 'POST',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify({
+                    name: titleInput.value,
+                    text: bodyInput.value,
+                }),
+            })
+                .then(res => res.json())
+                .then(res => console.log("RES:", res));
+        });
+
+    </script>
+</body>
+
+</html>
