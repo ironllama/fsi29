@@ -28,4 +28,6 @@ age = 12
 job = "student"
 print(f"{name} is a {age} year old {job}.")
 
+first_and_last("hello", 3)
 
+"hel" "llo"
