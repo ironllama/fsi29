@@ -62,3 +62,43 @@ def calculation(one, two):
 
 print("3. (30, -10) - ", calculation(10, 20))
 print("3. (77, 7) - ", calculation(42, 35))
+
+
+# 4. Generate a Python list of all the even numbers between 4 and 30
+print("4:", list(range(4, 31, 2)))
+
+
+# 5. Write a function that returns the largest item from the following list:
+lst = [4, 6, 8, 24, 12, 2]
+# def largest(in_lst):
+#     return max(in_lst)
+
+# largest = lambda x: max(x)
+# print("5:", largest(lst))
+
+largest = max
+print("5:", largest(lst))
+
+#    b. Change the list to verify your function is correct.
+lst = [46, 23, 67499, 23, 1]
+print("5b:", largest(lst))
+
+
+# 6. Write a function that given a string of odd length greater than 7,
+#     it returns a new string made up of the middle three characters of
+#     the string.
+def middle_three(in_str):
+    mid_pos = len(in_str) // 2
+    return in_str[mid_pos - 1: mid_pos + 2]
+
+print("6:", middle_three("extravaganzaa"))
+
+
+# 7. Write a function that given two strings, s1 and s2, it returns a new
+#     string with s2 in the middle of s1. If s1 has an odd number of
+#     characters, bias s2 towards the left.
+def put_in_middle(s1, s2):
+    mid_pos = len(s1) // 2
+    return s1[:mid_pos] + s2 + s1[mid_pos:]
+
+print("7:", put_in_middle("watermelon", "sugar"))
