@@ -3,3 +3,6 @@ node_modules/
 combo/
 drinksApiServer/
 chatApiServer/
+
+__pycache__/
+venv/
